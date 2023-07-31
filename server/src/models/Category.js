@@ -2,7 +2,7 @@ const Model = require("./Model.js");
 const uniqueFactory = require("objection-unique");
 
 const unique = uniqueFactory({
-    field: ["name"],
+    fields: ["name"]
 });
 
 class Category extends unique(Model) {
