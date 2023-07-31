@@ -28,7 +28,7 @@ const categoriesList = (props) => {
 
   return (
     <div className="categories-list">
-      <h1>Activities!</h1>
+      <h1>Categories!</h1>
       <ul>{listOfCategories}</ul>
     </div>
   );
