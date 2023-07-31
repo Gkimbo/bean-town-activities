@@ -1,12 +1,12 @@
 import React from "react";
 
-const placesList = (props) => {
+const categoriesList = (props) => {
 
     return (
-        <div className="places-list">
+        <div className="categories-list">
             <h1>This is things to do list</h1>
         </div>
     )
 }
 
-export default placesList
+export default categoriesList
