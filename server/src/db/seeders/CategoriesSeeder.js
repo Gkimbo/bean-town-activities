@@ -1,29 +1,29 @@
 import { Category } from "../../models/index.js";
 
 class CategorySeeder {
-    static async seed(){
+    static async seed() {
         const categoryData = [
             {
-                name: "Drinks"
+                name: "Drinks",
             },
             {
-                name: "Food"
+                name: "Food",
             },
             {
-                name: "Mini-golf"
+                name: "Mini-golf",
             },
             {
-                name: "Shopping"
-            }
-        ]
+                name: "Shopping",
+            },
+        ];
 
-        for(const category of categoryData){
-            const currentCategory = await Category.query().findOne({name: category.name})
-            if(!currentCategory){
-                await Category.query().insert(category)
+        for (const category of categoryData) {
+            const currentCategory = await Category.query().findOne({ name: category.name });
+            if (!currentCategory) {
+                await Category.query().insert(category);
             }
         }
     }
 }
 
-export default CategorySeeder
+export default CategorySeeder;
