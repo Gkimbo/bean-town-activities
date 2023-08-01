@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const categoriesList = (props) => {
+const CategoriesList = (props) => {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
@@ -34,4 +34,4 @@ const categoriesList = (props) => {
   );
 };
 
-export default categoriesList;
+export default CategoriesList;
