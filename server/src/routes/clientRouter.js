@@ -7,15 +7,15 @@ const clientRoutes = ["/", "/user-sessions/new", "/users/new"];
 const authedClientRoutes = ["/profile"];
 
 router.get(authedClientRoutes, (req, res) => {
-  if (req.user) {
-    res.sendFile(getClientIndexPath());
-  } else {
-    res.redirect("/user-sessions/new")
-  }
+    if (req.user) {
+        res.sendFile(getClientIndexPath());
+    } else {
+        res.redirect("/user-sessions/new");
+    }
 });
 
 router.get(clientRoutes, (req, res) => {
-  res.sendFile(getClientIndexPath());
+    res.sendFile(getClientIndexPath());
 });
 
 export default router;
