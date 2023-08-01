@@ -14,4 +14,14 @@ categoriesRouter.get("/", async (req, res) => {
     }
 });
 
+categoriesRouter.get("/:id", async (req, res) => {
+    try {
+        const category = await Category.query().findById(req.params.id);
+        const serializedCategory = await CategorySerializer.getSummaryOfOne(category);
+        return res.status(200).json({ category: serializedCategory });
+    } catch (error) {
+        return res.status(500).json({ errors: error });
+    }
+})
+
 export default categoriesRouter;

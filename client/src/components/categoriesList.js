@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const CategoriesList = (props) => {
   const [categories, setCategories] = useState([]);
@@ -23,7 +24,13 @@ const CategoriesList = (props) => {
   }, []);
 
   const listOfCategories = categories.map((category) => {
-    return <li key={category.id}>{category.name}</li>;
+    return (
+      <li key={category.id}>
+        <Link to={`/categories/${category.id}`}>
+          {category.name}
+        </Link>
+      </li>
+    )
   });
 
   return (
