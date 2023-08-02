@@ -30,7 +30,7 @@ const App = (props) => {
       <TopBar user={currentUser} />
       <Switch>
         <Route exact path="/" component={CategoriesList} />
-        <Route exact path="/category/:id" component={ActivitiesList} />
+        <Route exact path="/categories/:id" component={ActivitiesList} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>

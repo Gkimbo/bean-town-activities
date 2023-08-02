@@ -6,12 +6,13 @@ import ActivitySeeder from "./seeders/ActivitiesSeeder.js";
 class Seeder {
     static async seed() {
         // include individual seed commands here
-        console.log("seeding Activities");
-        await ActivitySeeder.seed();
-
+        
         console.log("seeding Categories");
         await CategorySeeder.seed();
-
+        
+        console.log("seeding Activities");
+        await ActivitySeeder.seed();
+        
         console.log("Done!");
         await connection.destroy();
     }

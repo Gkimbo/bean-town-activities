@@ -10,9 +10,6 @@ class CategorySeeder {
                 name: "Food",
             },
             {
-                name: "Mini-golf",
-            },
-            {
                 name: "Shopping",
             },
         ];
