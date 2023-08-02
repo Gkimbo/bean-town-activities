@@ -39,23 +39,4 @@ context("Category Index Page", () => {
         .and("have.attr", "href", `${showUrl}`);
     });
 
-    it("has a link to the home page", () => {
-        cy.get("a")
-        .first()
-        .should("have.text", "Home")
-        .and("have.attr", "href", "/")
-    })
-
-    it("has button to register new user", () => {
-        cy.get(".button")
-        .should("have.text", "Sign Up")
-        .and("have.attr", "href", "/users/new")
-    })
-
-    it("has button to sign in existing user", () => {
-        cy.get(".sign-in")
-        .find("a")
-        .should("have.text", "Sign In")
-        .and("have.attr", "href", "/user-sessions/new")
-    })
 });

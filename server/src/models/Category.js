@@ -10,6 +10,16 @@ class Category extends unique(Model) {
         return "categories";
     }
 
+    static get jsonSchema(){
+        return {
+            type: "object",
+            required: ["name"],
+            properties: {
+                name: { type: "string", minLength: 2 }
+            },
+        };
+    }
+
     static get relationMappings() {
         const { Activity } = require("./index.js");
         return {

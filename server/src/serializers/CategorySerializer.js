@@ -1,5 +1,7 @@
+import ActivitySerializer from "./ActivitySerializer.js";
+
 class CategorySerializer {
-    static async getSummary(category) {
+    static getSummary(category) {
         const allowedAttributes = ["id", "name"];
         const updatedCategories = category.map((category) => {
             return allowedAttributes.reduce((obj, attr) => {
@@ -18,13 +20,9 @@ class CategorySerializer {
         }, {});
 
         const activities = await category.$relatedQuery("activities");
-        updatedCategory.activities = activities.map((activity) => {
-            return {
-                id: activity.id,
-                name: activity.name,
-                description: activity.description,
-            };
-        });
+        const serializedActivity = ActivitySerializer.getSummaryOfArray(activities)
+        updatedCategory.activities = serializedActivity
+
         return updatedCategory;
     }
 }

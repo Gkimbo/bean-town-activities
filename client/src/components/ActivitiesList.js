@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const ActivitiesList = (props) => {
-  const [activities, setActivities] = useState([]);
-  const [category, setCategory] = useState({});
+  const [category, setCategory] = useState({ activities: [] })
 
   const getActivities = async () => {
     try {
@@ -12,7 +11,6 @@ const ActivitiesList = (props) => {
         throw error;
       }
       const responseData = await response.json();
-      setActivities(responseData.category.activities);
       setCategory(responseData.category);
     } catch (error) {
       console.error("Error in fetch!");
@@ -24,7 +22,7 @@ const ActivitiesList = (props) => {
     getActivities();
   }, []);
 
-  const listOfActivities = activities.map((activity) => {
+  const listOfActivities = category.activities.map((activity) => {
     return <li key={activity.id}>{activity.name}</li>;
   });
 
