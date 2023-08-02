@@ -4,6 +4,7 @@ const ActivitiesList = (props) => {
   const [category, setCategory] = useState({ activities: [] })
 
   const getActivities = async () => {
+    console.log(props)
     try {
       const response = await fetch(`/api/v1/categories/${props.computedMatch.params.id}`);
       if (!response.status) {
