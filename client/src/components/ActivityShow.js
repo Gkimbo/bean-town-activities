@@ -9,7 +9,7 @@ const ActivityShow = props => {
     })
 
     const getActivity = async () => {
-        const activityId = props.match.params.id
+        const activityId = props.computedMatch.params.id
         try {
             const response = await fetch(`/api/v1/activities/${activityId}`)
             if (!response.ok) {
