@@ -4,7 +4,7 @@ import SignOutButton from "../authentication/SignOutButton";
 
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
-    <li key="sign-in">
+    <li key="sign-in" className="sign-in">
       <Link to="/user-sessions/new">Sign In</Link>
     </li>,
     <li key="sign-up">

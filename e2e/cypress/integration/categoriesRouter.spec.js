@@ -34,4 +34,37 @@ describe("/api/v1/categories", () => {
         });
     });
   });
+
+  describe("GET /categories/:id", () => {
+    const initialCategories = [{ name: "Shopping" }, { name: "Bodega" }];
+    let showUrl
+
+    beforeEach(() => {
+      cy.task("db:truncate", "Category");
+      cy.task("db:insert", { modelName: "Category", json: initialCategories });
+      cy.task("db:find", { modelName: "Category", conditions: { name: "Shopping" } }).then((category) => {
+        showUrl = `/api/v1/categories/${category[0].id}`
+      })
+    })
+
+    it("has the correct response type", () => {
+      cy.request(showUrl)
+        .its("headers")
+        .its("content-type")
+        .should("include", "application/json")
+    })
+
+    it("return the correct status code", () => {
+      cy.request(showUrl)
+        .its("status")
+        .should("be.equal", 200)
+    })
+
+    it("returns the correct data", () => {
+      cy.request(showUrl)
+        .its("body")
+        .its("category")
+        .should("have.property", "name", "Shopping")
+    })
+  })
 });

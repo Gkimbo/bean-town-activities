@@ -4,7 +4,6 @@ class ActivitiesSeeder {
     static async seed() {
         const drinks = await Category.query().findOne({ name: "Drinks" });
         const food = await Category.query().findOne({ name: "Food" });
-        const miniGolf = await Category.query().findOne({ name: "Mini-golf" });
         const shopping = await Category.query().findOne({ name: "Shopping" });
         await Activity.query().insert({ name: "J.J. Foley's", description: "Bar and Grille with Irish vibes!", categoryId: drinks.id });
         await Activity.query().insert({ name: "Sidebar", description: "Cheap drinks with an atmosphere that changes every night", categoryId: drinks.id });

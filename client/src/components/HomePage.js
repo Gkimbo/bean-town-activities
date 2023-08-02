@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const CategoriesList = (props) => {
+const HomePage = (props) => {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
@@ -39,4 +39,4 @@ const CategoriesList = (props) => {
   );
 };
 
-export default CategoriesList;
+export default HomePage;
