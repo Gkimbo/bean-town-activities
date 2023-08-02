@@ -6,13 +6,12 @@ const ActivitiesList = (props) => {
 
   const getActivities = async () => {
     try {
-      const response = await fetch(`/api/v1/categories/${props.match.params.id}`);
+      const response = await fetch(`/api/v1/categories/${props.computedMatch.params.id}`);
       if (!response.status) {
         const error = new Error(`${response.status} (${response.statusText})`);
         throw error;
       }
       const responseData = await response.json();
-      console.log(responseData);
       setActivities(responseData.category.activities);
       setCategory(responseData.category);
     } catch (error) {
@@ -30,9 +29,11 @@ const ActivitiesList = (props) => {
   });
 
   return (
-    <div className="activities-list">
-      <h1>{category.name}</h1>
-      <ul>{listOfActivities}</ul>
+    <div className="grid-y">
+      <div className="cell small-12">
+        <h1>{category.name}</h1>
+        <ul>{listOfActivities}</ul>
+      </div>
     </div>
   );
 };

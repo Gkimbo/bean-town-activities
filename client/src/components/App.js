@@ -9,6 +9,7 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import CategoriesList from "./CategoriesList";
 import ActivitiesList from "./ActivitiesList";
+import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -30,7 +31,13 @@ const App = (props) => {
       <TopBar user={currentUser} />
       <Switch>
         <Route exact path="/" component={CategoriesList} />
-        <Route exact path="/categories/:id" component={ActivitiesList} />
+        <AuthenticatedRoute
+          exact={true}
+          path="/categories/:id"
+          component={ActivitiesList}
+          
+          user={currentUser}
+        />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>

@@ -26,11 +26,9 @@ const CategoriesList = (props) => {
   const listOfCategories = categories.map((category) => {
     return (
       <li key={category.id}>
-        <Link to={`/categories/${category.id}`}>
-          {category.name}
-        </Link>
+        <Link to={`/categories/${category.id}`}>{category.name}</Link>
       </li>
-    )
+    );
   });
 
   return (
