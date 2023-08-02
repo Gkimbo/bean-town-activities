@@ -1,6 +1,6 @@
 class ActivitySerializer {
     static getSummaryOfOne(activity){
-        const acceptedAttributes = ["id", "name", "description"]
+        const acceptedAttributes = ["id", "name", "description", "location"]
         const serializedActivity = {}
 
         for(const attribute of acceptedAttributes){
@@ -10,7 +10,7 @@ class ActivitySerializer {
     }
 
     static getSummaryOfArray(activityArray){
-        const acceptedAttributes = ["id", "name", "description"]
+        const acceptedAttributes = ["id", "name", "description", "location"]
 
         const serializedActivity = activityArray.map(activity => {
             const serializedObject = {}

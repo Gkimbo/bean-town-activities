@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const ActivitiesList = (props) => {
   const [category, setCategory] = useState({ activities: [] })
@@ -23,7 +24,13 @@ const ActivitiesList = (props) => {
   }, []);
 
   const listOfActivities = category.activities.map((activity) => {
-    return <li key={activity.id}>{activity.name}</li>;
+    return (
+      <li key={activity.id}>
+        <Link to={`/activities/${activity.id}`}>
+          {activity.name}
+        </Link>
+      </li>
+    )
   });
 
   return (

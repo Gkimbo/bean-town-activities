@@ -10,16 +10,19 @@ class ActivitiesSeeder {
             {
                 name: "J.J. Foley's",
                 description: "Bar and Grille with Irish vibes!",
+                location: "21 Kingston St, Boston, MA 02111",
                 categoryId: drinks.id
             },
             {
                 name: "Sidebar",
                 description: "Cheap drinks with an atmosphere that changes every night",
+                location: "14 Bromfield St, Boston, MA 02108",
                 categoryId: drinks.id
             },
             {
                 name: "The Hub Pub",
                 description: "Friendliest Pub in the Hub",
+                location: "18 Province St, Boston, MA 02108",
                 categoryId: drinks.id
             },
             {
