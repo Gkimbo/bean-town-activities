@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-context("Category Index Page", () => {
+context("Home Page with Categories", () => {
         const initialCategories = [{ name: "Shopping" }, { name: "Bodega" }];
         let showUrl
     beforeEach(() => {
