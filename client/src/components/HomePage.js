@@ -25,16 +25,24 @@ const HomePage = (props) => {
 
   const listOfCategories = categories.map((category) => {
     return (
-      <li key={category.id}>
-        <Link to={`/categories/${category.id}`}>{category.name}</Link>
-      </li>
+      <Link to={`/categories/${category.id}`}>
+        <button className="button category-button">{category.name}</button>
+      </Link>
     );
   });
 
   return (
-    <div className="categories-list">
-      <h1>Categories!</h1>
-      <ul>{listOfCategories}</ul>
+    <div className="text-center">
+      <h2 className="text-center">Explore</h2>
+      <div className="categories-list align-center">{listOfCategories}</div>
+      <div className=" activity-container grid-x">
+        <p className="text-center activity-tile">
+      Lorem ipsum dolor sit amet. A omnis possimus ut magni ipsa et sint quam et facere reiciendis. Eos nostrum obcaecati rem quibusdam consequatur est reiciendis nobis sed amet quia. Et galisum sint eos saepe error et architecto nihil 33 quod harum ea laudantium voluptatem aut obcaecati dicta. Aut quaerat rerum rem possimus reiciendis est quia sint ea quas architecto eos rerum nihil.
+
+Ut rerum eligendi At quia explicabo ad sint dolorem hic debitis dolor qui temporibus obcaecati? Eos voluptatum galisum ea saepe saepe sit unde iste eum corrupti blanditiis et explicabo aliquam. Vel nihil sunt id deserunt tempora a odit laudantium.
+
+        </p>
+      </div>
     </div>
   );
 };
