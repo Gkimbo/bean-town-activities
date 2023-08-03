@@ -10,6 +10,7 @@ import TopBar from "./layout/TopBar";
 import ActivitiesList from "./ActivitiesList";
 import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import HomePage from "./HomePage";
+import ReviewsShowPage from "./ReviewsShowPage";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -37,6 +38,7 @@ const App = (props) => {
           component={ActivitiesList}
           user={currentUser}
         />
+        <Route exact path="/reviews" component={ReviewsShowPage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>

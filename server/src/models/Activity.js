@@ -5,7 +5,7 @@ class Activity extends Model {
         return "activities";
     }
 
-    static get jsonSchema(){
+    static get jsonSchema() {
         return {
             type: "object",
             required: ["name"],
@@ -17,7 +17,7 @@ class Activity extends Model {
     }
 
     static get relationMappings() {
-        const { Category } = require("./index.js");
+        const { Category, Review, User } = require("./index.js");
         return {
             category: {
                 relation: Model.BelongsToOneRelation,
@@ -27,6 +27,28 @@ class Activity extends Model {
                     to: "categories.id",
                 },
             },
+
+            reviews: {
+                relation: Model.HasManyRelation,
+                modelClass: Review,
+                join: {
+                    from: "activities.id",
+                    to: "reviews.activityId"
+                }
+            },
+
+            users: {
+                relation: Model.ManyToManyRelation,
+                modelClass: User,
+                join: {
+                    from: "activities.id",
+                    through: {
+                        from: "reviews.activityId",
+                        to: "reviews.userId"
+                    },
+                    to: "users.id"
+                }
+            }
         };
     }
 }
