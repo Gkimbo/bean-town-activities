@@ -5,17 +5,6 @@ describe("Register Test User", () => {
   const email = "test@test.com";
   const password = "password";
 
-  it("registers and signs in the test user", () => {
-    cy.task("db:truncate", "User");
-    cy.visit("/users/new");
-    cy.get("form").within(() => {
-      cy.findByLabelText("Email").type(email);
-      cy.findByLabelText("Password").type(password);
-      cy.findByLabelText("Password Confirmation").type(password);
-      cy.findByText("Register").click();
-    });
-  });
-  
   context("Activity Show Page", () => {
     const initialActivity = {
       name: "test bar",
@@ -39,6 +28,17 @@ describe("Register Test User", () => {
           activityId = activity[0].id;
         }
       );
+      cy.task("db:truncate", "User");
+      cy.visit("/users/new");
+      cy.get("form").within(() => {
+        cy.findByLabelText("Email").type(email);
+        cy.findByLabelText("Password").type(password);
+        cy.findByLabelText("Password Confirmation").type(password);
+        cy.findByText("Register").click()
+      });
+
+      cy.visit(`/activities/${activityId}`);
+      
     });
 
     it("displays the activity name", () => {
@@ -47,13 +47,17 @@ describe("Register Test User", () => {
       .find("h3")
       .should("have.text", `${initialActivity.name}`);
     });
+
     it("displays the activity location", () => {
+      cy.visit(`/activities/${activityId}`);
       cy.get(".activity-container")
       .find("p")
       .first()
       .should("have.text", `${initialActivity.location}`);
     });
+    
     it("displays the activity description", () => {
+      cy.visit(`/activities/${activityId}`);
       cy.get(".activity-container")
       .find("p")
       .last()
