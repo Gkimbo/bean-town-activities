@@ -11,6 +11,8 @@ import ActivitiesList from "./ActivitiesList";
 import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import HomePage from "./HomePage";
 import ReviewsShowPage from "./ReviewsShowPage";
+import ActivityShow from "./ActivityShow";
+
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -39,6 +41,13 @@ const App = (props) => {
           user={currentUser}
         />
         <Route exact path="/reviews" component={ReviewsShowPage} />
+        <AuthenticatedRoute
+          exact={true}
+          path="/activities/:id"
+          component={ActivityShow}
+          user={currentUser}
+        />
+
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>

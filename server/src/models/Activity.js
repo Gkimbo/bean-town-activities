@@ -12,6 +12,7 @@ class Activity extends Model {
             properties: {
                 name: { type: "string", minLength: 2 },
                 description: { type: "string" },
+                location: { type: "string" },
             },
         };
     }
