@@ -10,6 +10,7 @@ import TopBar from "./layout/TopBar";
 import ActivitiesList from "./ActivitiesList";
 import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import HomePage from "./HomePage";
+import ActivityShow from "./ActivityShow";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -35,6 +36,12 @@ const App = (props) => {
           exact={true}
           path="/categories/:id"
           component={ActivitiesList}
+          user={currentUser}
+        />
+        <AuthenticatedRoute
+          exact={true}
+          path="/activities/:id"
+          component={ActivityShow}
           user={currentUser}
         />
         <Route exact path="/users/new" component={RegistrationForm} />

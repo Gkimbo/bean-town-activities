@@ -87,12 +87,17 @@ const RegistrationForm = () => {
 
   return (
     <div className="grid-container">
-      <h1>Register</h1>
-      <form onSubmit={onSubmit}>
+      <h1 className="form-style">Register</h1>
+      <form onSubmit={onSubmit} className="form-style">
         <div>
           <label>
             Email
-            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
+            <input 
+            type="text" 
+            name="email" 
+            value={userPayload.email}
+            className="text-box" 
+            onChange={onInputChange} />
             <FormError error={errors.email} />
           </label>
         </div>
@@ -103,6 +108,7 @@ const RegistrationForm = () => {
               type="password"
               name="password"
               value={userPayload.password}
+              className="text-box"
               onChange={onInputChange}
             />
             <FormError error={errors.password} />
@@ -115,6 +121,7 @@ const RegistrationForm = () => {
               type="password"
               name="passwordConfirmation"
               value={userPayload.passwordConfirmation}
+              className="text-box"
               onChange={onInputChange}
             />
             <FormError error={errors.passwordConfirmation} />

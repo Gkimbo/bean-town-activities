@@ -25,16 +25,25 @@ const HomePage = (props) => {
 
   const listOfCategories = categories.map((category) => {
     return (
-      <li key={category.id}>
+      <li className="btn-1">
         <Link to={`/categories/${category.id}`}>{category.name}</Link>
       </li>
     );
   });
 
   return (
-    <div className="categories-list">
-      <h1>Categories!</h1>
-      <ul>{listOfCategories}</ul>
+    <div className="text-center">
+      <h2 className="text-center">Explore</h2>
+      <div className="categories-list align-center">{listOfCategories}</div>
+      <div className=" activity-container grid-x">
+        <ul className="text-center activity-tile no-dot-list">
+          <li>Welcome to Bean town reviews HomePage!</li>
+          <li>
+            Your one stop shop to see all of the reviews for your favorite places in Downtown
+            boston!
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };
