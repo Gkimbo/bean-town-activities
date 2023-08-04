@@ -1,8 +1,8 @@
-const Model = require("./Model.js");
+const Model = require("./Model.js")
 
 class Activity extends Model {
     static get tableName() {
-        return "activities";
+        return "activities"
     }
 
     static get jsonSchema() {
@@ -12,21 +12,21 @@ class Activity extends Model {
             properties: {
                 name: { type: "string", minLength: 2 },
                 description: { type: "string" },
-                location: { type: "string" },
-            },
-        };
+                location: { type: "string" }
+            }
+        }
     }
 
     static get relationMappings() {
-        const { Category, Review, User } = require("./index.js");
+        const { Category, Review, User } = require("./index.js")
         return {
             category: {
                 relation: Model.BelongsToOneRelation,
                 modelClass: Category,
                 join: {
                     from: "activities.categoryId",
-                    to: "categories.id",
-                },
+                    to: "categories.id"
+                }
             },
 
             reviews: {
@@ -50,8 +50,8 @@ class Activity extends Model {
                     to: "users.id"
                 }
             }
-        };
+        }
     }
 }
 
-module.exports = Activity;
+module.exports = Activity

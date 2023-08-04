@@ -15,7 +15,6 @@ class Review extends Model {
         }
     }
 
-
     static get relationMappings() {
         const { User, Activity } = require("./index.js")
 
@@ -39,8 +38,6 @@ class Review extends Model {
             }
         }
     }
-
-
 }
 
 module.exports = Review
