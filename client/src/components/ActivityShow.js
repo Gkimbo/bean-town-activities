@@ -30,7 +30,7 @@ const ActivityShow = (props) => {
 
   return (
     <div className="activity-container activity-show">
-      <h3>{activity.name}</h3>
+      <h3 className="activity-title">{activity.name}</h3>
       <p>{activity.location}</p>
       <p>{activity.description}</p>
     </div>
