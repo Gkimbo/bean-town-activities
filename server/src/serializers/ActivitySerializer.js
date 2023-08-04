@@ -1,4 +1,5 @@
 class ActivitySerializer {
+
     static getSummaryOfOne(activity){
         const acceptedAttributes = ["id", "name", "description", "location"]
         const serializedActivity = {}
@@ -8,7 +9,7 @@ class ActivitySerializer {
         }
         return serializedActivity
     }
-
+  
     static getSummaryOfArray(activityArray){
         const acceptedAttributes = ["id", "name", "description", "location"]
 
