@@ -25,9 +25,9 @@ const HomePage = (props) => {
 
   const listOfCategories = categories.map((category) => {
     return (
-      <Link to={`/categories/${category.id}`}>
-        <button className="button category-button">{category.name}</button>
-      </Link>
+      <li className="btn-2`">
+        <Link to={`/categories/${category.id}`}>{category.name}</Link>
+      </li>
     );
   });
 
@@ -36,12 +36,13 @@ const HomePage = (props) => {
       <h2 className="text-center">Explore</h2>
       <div className="categories-list align-center">{listOfCategories}</div>
       <div className=" activity-container grid-x">
-        <p className="text-center activity-tile">
-      Lorem ipsum dolor sit amet. A omnis possimus ut magni ipsa et sint quam et facere reiciendis. Eos nostrum obcaecati rem quibusdam consequatur est reiciendis nobis sed amet quia. Et galisum sint eos saepe error et architecto nihil 33 quod harum ea laudantium voluptatem aut obcaecati dicta. Aut quaerat rerum rem possimus reiciendis est quia sint ea quas architecto eos rerum nihil.
-
-Ut rerum eligendi At quia explicabo ad sint dolorem hic debitis dolor qui temporibus obcaecati? Eos voluptatum galisum ea saepe saepe sit unde iste eum corrupti blanditiis et explicabo aliquam. Vel nihil sunt id deserunt tempora a odit laudantium.
-
-        </p>
+        <ul className="text-center activity-tile no-dot-list">
+          <li>Welcome to Bean town reviews HomePage!</li>
+          <li>
+            Your one stop shop to see all of the reviews for your favorite places in Downtown
+            boston!
+          </li>
+        </ul>
       </div>
     </div>
   );

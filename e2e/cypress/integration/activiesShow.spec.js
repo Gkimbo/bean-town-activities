@@ -15,6 +15,7 @@ describe("Register Test User", () => {
       cy.findByText("Register").click();
     });
   });
+  
   context("Activity Show Page", () => {
     const initialActivity = {
       name: "test bar",

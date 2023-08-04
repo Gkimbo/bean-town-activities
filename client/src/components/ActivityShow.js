@@ -29,10 +29,10 @@ const ActivityShow = (props) => {
   }, []);
 
   return (
-    <div className="activity-container">
-      <h3 className="activity-name">{activity.name}</h3>
-      <p className="activity-location">{activity.location}</p>
-      <p className="activity-desc">{activity.description}</p>
+    <div className="activity-container activity-show">
+      <h3>{activity.name}</h3>
+      <p>{activity.location}</p>
+      <p>{activity.description}</p>
     </div>
   );
 };

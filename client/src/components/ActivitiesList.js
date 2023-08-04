@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const ActivitiesList = (props) => {
-  const [category, setCategory] = useState({ activities: [] })
+  const [category, setCategory] = useState({ activities: [] });
 
   const getActivities = async () => {
     try {
@@ -25,17 +25,15 @@ const ActivitiesList = (props) => {
 
   const listOfActivities = category.activities.map((activity) => {
     return (
-      <li key={activity.id}>
-        <Link to={`/activities/${activity.id}`}>
-          {activity.name}
-        </Link>
+      <li key={activity.id} className="category-link">
+        <Link to={`/activities/${activity.id}`}>{activity.name}</Link>
       </li>
-    )
+    );
   });
 
   return (
-    <div className="grid-y">
-      <div className="cell small-12">
+    <div className="text-center activity-container">
+      <div className="no-dot-list">
         <h1>{category.name}</h1>
         <ul>{listOfActivities}</ul>
       </div>
