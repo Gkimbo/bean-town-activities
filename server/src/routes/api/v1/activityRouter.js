@@ -1,7 +1,7 @@
 import express from "express"
 import { Activity } from "../../../models/index.js"
 import ActivitySerializer from "../../../serializers/ActivitySerializer.js"
-import reviewsRouter from "./reviewsPageRouter.js"
+import reviewsRouter from "./reviewRouter.js"
 
 const activityRouter = new express.Router()
 
