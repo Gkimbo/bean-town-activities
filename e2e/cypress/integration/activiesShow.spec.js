@@ -28,7 +28,7 @@ describe("Register Test User", () => {
         cy.findByLabelText("Email").type(email);
         cy.findByLabelText("Password").type(password);
         cy.findByLabelText("Password Confirmation").type(password);
-        cy.findByText("Register").click()
+        cy.findByText("Register").click();
       });
       cy.task("db:insert", { modelName: "Activity", json: initialActivity });
       cy.task("db:find", { modelName: "Activity", conditions: { name: "test bar" } }).then(
@@ -40,23 +40,21 @@ describe("Register Test User", () => {
     });
 
     it("displays the activity name", () => {
-      cy.get(".activity-container")
-      .find("h3")
-      .should("have.text", `${initialActivity.name}`);
+      cy.get(".activity-container").find("h3").should("have.text", `${initialActivity.name}`);
     });
 
     it("displays the activity location", () => {
       cy.get(".activity-container")
-      .find("p")
-      .first()
-      .should("have.text", `${initialActivity.location}`);
+        .find("p")
+        .first()
+        .should("have.text", `${initialActivity.location}`);
     });
-    
+
     it("displays the activity description", () => {
       cy.get(".activity-container")
-      .find("p")
-      .last()
-      .should("have.text", `${initialActivity.description}`);
+        .find("p")
+        .last()
+        .should("have.text", `${initialActivity.description}`);
     });
   });
 });

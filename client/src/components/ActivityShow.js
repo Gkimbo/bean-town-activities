@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import EditReviews from "./EditReviews";
+import ReviewsShowPage from "./ReviewsShowPage";
 
 const ActivityShow = (props) => {
   const [activity, setActivity] = useState({
     name: "",
     location: "",
     description: "",
+    reviews: []
   });
 
   const activityId = props.computedMatch.params.id;
@@ -18,7 +20,6 @@ const ActivityShow = (props) => {
         const error = new Error(errorMessage);
         throw error;
       }
-
       const body = await response.json();
       setActivity(body.activity);
     } catch (error) {
@@ -32,7 +33,8 @@ const ActivityShow = (props) => {
 
   return (
     <>
-      <div className="activity-container activity-show">
+    <div className="grid-x">
+      <div className="activity-container activity-show cell small-4">
         <h3 className="activity-title">{activity.name}</h3>
         <p>{activity.location}</p>
         <p>{activity.description}</p>
@@ -40,7 +42,12 @@ const ActivityShow = (props) => {
       <div className="containerBtn">
         <div className="btn"><Link to={`/reviews/${activityId}`}> Edit Review!</Link></div>
       </div>
+      <div className="activity-container cell auto">
+        <ReviewsShowPage reviews={activity.reviews}/>
+      </div>
+    </div>
     </>
+
   );
 };
 

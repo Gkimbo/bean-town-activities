@@ -10,6 +10,7 @@ import TopBar from "./layout/TopBar";
 import ActivitiesList from "./ActivitiesList";
 import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import HomePage from "./HomePage";
+
 import ActivityShow from "./ActivityShow";
 import EditReviews from "./EditReviews";
 
