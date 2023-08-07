@@ -10,6 +10,7 @@ import TopBar from "./layout/TopBar";
 import ActivitiesList from "./ActivitiesList";
 import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import HomePage from "./HomePage";
+
 import ActivityShow from "./ActivityShow";
 
 const App = (props) => {
@@ -44,6 +45,7 @@ const App = (props) => {
           component={ActivityShow}
           user={currentUser}
         />
+
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>
