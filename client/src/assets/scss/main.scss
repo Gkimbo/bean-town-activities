@@ -1,6 +1,7 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
+
 // place global css here
 *,
 *::before,
@@ -78,7 +79,7 @@ body {
   width: 70%;
 }
 
-.categories-list a{
+.categories-list a {
   color: var(--button-text);
 }
 
@@ -92,7 +93,7 @@ body {
   margin-right: 10%;
   margin-left: 10%;
   margin-top: 5%;
-  padding:4%;
+  padding: 4%;
   background: var(--tile-color);
   color: #000000;
   border-radius: 25px;
@@ -117,111 +118,184 @@ body {
   margin: 5px;
 }
 
-.text-box{
+.text-box {
   margin: 0 auto;
-  width:50%;
+  width: 50%;
   background-color: #8fbdd1;
 }
 
-.form-style{
+.form-style {
   text-align: center;
 }
 
 .containerBtn {
-	width: 1000px;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
+  width: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
+
 .containerBtn .btn {
-	position: relative;
-	top: 0;
-	left: 0;
-	width: 250px;
-	height: 50px;
-	margin: 10px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 50px;
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .containerBtn .btn a {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background: rgba(255, 255, 255, 0.05);
-	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
-	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-	border-top: 1px solid rgba(255, 255, 255, 0.1);
-	border-radius: 30px;
-	padding: 10px;
-	letter-spacing: 1px;
-	text-decoration: none;
-	overflow: hidden;
-	color: var(--button-text);
-	font-weight: 400px;
-	z-index: 1;
-	transition: 0.5s;
-	backdrop-filter: blur(15px);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  padding: 10px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  overflow: hidden;
+  color: var(--button-text);
+  font-weight: 400px;
+  z-index: 1;
+  transition: 0.5s;
+  backdrop-filter: blur(15px);
 }
+
 .containerBtn .btn:hover a {
-	letter-spacing: 3px;
+  letter-spacing: 3px;
 }
+
 .containerBtn .btn a::before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 50%;
-	height: 100%;
-	background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
-	transform: skewX(45deg) translate(0);
-	transition: 0.5s;
-	filter: blur(0px);
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(45deg) translate(0);
+  transition: 0.5s;
+  filter: blur(0px);
 }
+
 .containerBtn .btn:hover a::before {
-	transform: skewX(45deg) translate(200px);
+  transform: skewX(45deg) translate(200px);
 }
+
 .containerBtn .btn::before {
-	content: "";
-	position: absolute;
-	left: 50%;
-	transform: translatex(-50%);
-	bottom: -5px;
-	width: 30px;
-	height: 10px;
-	background: var(--button-color);
-	border-radius: 10px;
-	transition: 0.5s;
-	transition-delay: 0.5;
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+  bottom: -5px;
+  width: 30px;
+  height: 10px;
+  background: var(--button-color);
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5;
 }
-.containerBtn .btn:hover::before /*lightup button*/ {
-	bottom: 0;
-	height: 50%;
-	width: 80%;
-	border-radius: 30px;
+
+.containerBtn .btn:hover::before
+
+/*lightup button*/
+  {
+  bottom: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
 }
 
 .containerBtn .btn::after {
-	content: "";
-	position: absolute;
-	left: 50%;
-	transform: translatex(-50%);
-	top: -5px;
-	width: 30px;
-	height: 10px;
-	background: var(--button-color);
-	border-radius: 10px;
-	transition: 0.5s;
-	transition-delay: 0.5;
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translatex(-50%);
+  top: -5px;
+  width: 30px;
+  height: 10px;
+  background: var(--button-color);
+  border-radius: 10px;
+  transition: 0.5s;
+  transition-delay: 0.5;
 }
-.containerBtn .btn:hover::after /*lightup button*/ {
-	top: 0;
-	height: 50%;
-	width: 80%;
-	border-radius: 30px;
+
+.containerBtn .btn:hover::after {
+  top: 0;
+  height: 50%;
+  width: 80%;
+  border-radius: 30px;
+}
+
+button {
+  width: 10rem;
+  height: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background: red;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+  background: #e62222;
+}
+
+button,
+button span {
+  transition: 200ms;
+}
+
+button .text {
+  transform: translateX(35px);
+  color: white;
+  font-weight: bold;
+}
+
+button .icon {
+  position: absolute;
+  border-left: 1px solid #c41b1b;
+  transform: translateX(110px);
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button svg {
+  width: 15px;
+  fill: #eee;
+}
+
+button:hover {
+  background: #ff3636;
+}
+
+button:hover .text {
+  color: transparent;
+}
+
+button:hover .icon {
+  width: 150px;
+  border-left: none;
+  transform: translateX(0);
+}
+
+button:focus {
+  outline: none;
+}
+
+button:active .icon svg {
+  transform: scale(0.8);
 }

@@ -39,7 +39,6 @@ const ActivityShow = (props) => {
       </div>
       <div className="containerBtn">
         <div className="btn"><Link to={`/reviews/${activityId}`}> Edit Review!</Link></div>
-        <div className="btn"><a>X</a></div>
       </div>
     </>
   );
