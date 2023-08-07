@@ -9,7 +9,7 @@ class ActivitySerializer {
         return serializedActivity
     }
 
-    static getSummaryOfArray(activityArray) {
+    static getSummaryOfArray(activityArray){
         const acceptedAttributes = ["id", "name", "description", "location"]
 
         const serializedActivity = activityArray.map((activity) => {

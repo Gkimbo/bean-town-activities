@@ -36,7 +36,7 @@ const ActivityShow = (props) => {
         <p>{activity.description}</p>
       </div>
       <div className="activity-container cell auto">
-        <ReviewsShowPage id={activityId} />
+        <ReviewsShowPage id={activityId} currentUser={props.user.id} />
       </div>
     </div>
   );
