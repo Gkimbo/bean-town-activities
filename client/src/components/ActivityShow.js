@@ -17,7 +17,6 @@ const ActivityShow = (props) => {
         const error = new Error(errorMessage);
         throw error;
       }
-
       const body = await response.json();
       setActivity(body.activity);
     } catch (error) {

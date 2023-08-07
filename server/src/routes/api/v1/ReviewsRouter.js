@@ -7,7 +7,6 @@ reviewsRouter.get("/", async (req, res) => {
     try {
         const activityId = req.params.activityId
         const activity = await Activity.query().findById(activityId)
-
         const reviews = await activity.$relatedQuery("reviews")
         return res.status(200).json({ reviews })
     } catch (error) {

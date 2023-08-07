@@ -1,9 +1,9 @@
 import express from "express"
-import { Activity } from "../../../models/index.js";
-import ActivitySerializer from "../../../serializers/ActivitySerializer.js";
-import reviewsRouter from "./ReviewsRouter.js";
+import { Activity } from "../../../models/index.js"
+import ActivitySerializer from "../../../serializers/ActivitySerializer.js"
+import reviewsRouter from "./ReviewsRouter.js"
 
-const activityRouter = new express.Router({mergeParams: true})
+const activityRouter = new express.Router({ mergeParams: true })
 
 activityRouter.use("/:activityId/reviews", reviewsRouter)
 
