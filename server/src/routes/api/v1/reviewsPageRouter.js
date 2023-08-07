@@ -1,6 +1,7 @@
 import express from "express"
 import { Activity, Review } from "../../../models/index.js"
 import { ValidationError } from "objection";
+import cleanUserInput from "../../../services/cleanUserInput.js";
 
 const reviewsRouter = new express.Router({ mergeParams: true })
 
@@ -16,7 +17,8 @@ reviewsRouter.get("/", async (req, res) => {
 })
 
 reviewsRouter.post("/", async (req,res)=>{
-    const newReview = req.body
+
+    const newReview = cleanUserInput(req.body)
     const {review , userId} = newReview
     const {activityId} = req.params
 

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-//import ErrorList from "./ErrorList"
+import ErrorList from "./registration/components/layout/ErrorList";
 import translateServerErrors from "../services/translateServerErrors"
 import NewReviewForm from "./NewReviewForm";
 
-const ReviewsShowPage = ({ id, currentUser }) => {
+const ReviewsShowPage = ({ id, currentUser, activityName }) => {
   const [reviewList, setReviewList] = useState([]);
+  const [errors, setErrors] = useState([])
 
   const getReviews = async () => {
     try {
@@ -45,26 +46,39 @@ const ReviewsShowPage = ({ id, currentUser }) => {
         }
       } else {
         const reviewData = await response.json()
-        console.log(reviewData)
+        setErrors([])
         setReviewList([...reviewList, reviewData.review])
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
     }
   }
+
   const listOfReviews = reviewList.map((reviewItem) => {
     return <li key={reviewItem.id}>{reviewItem.review}</li>;
   });
 
+  let reviewContent
+  if (listOfReviews.length === 0) {
+    reviewContent = <p>No reviews yet!</p>
+  } else {
+    reviewContent = <ul>{listOfReviews}</ul>
+  }
+
   return (
-    <>
-      <h1>Reviews</h1>
-      <ul>{listOfReviews}</ul>
-      {/* <ErrorList errors={errors} /> */}
-      <NewReviewForm
-      postNewReview={postReview}
-      currentUser = {currentUser}/>
-    </>
+    <div className="review-show-box">
+      <div className="reviews">
+        <h4>Reviews</h4>
+        {reviewContent}
+        <ErrorList errors={errors} />
+      </div>
+      <div className="review-form">
+        <h5>Share your thoughts on {activityName} !!</h5>
+        <NewReviewForm
+          postNewReview={postReview}
+          currentUser={currentUser} />
+      </div>
+    </div>
   );
 };
 

@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 
-
 const NewReviewForm = ({ postNewReview, currentUser }) => {
     const [newReview, setNewReview] = useState({
         review: ""
@@ -27,10 +26,8 @@ const NewReviewForm = ({ postNewReview, currentUser }) => {
 
     return (
         <div className="form">
-            <h1>Add reviews here</h1>
             <form onSubmit={handleSubmit}>
                 <label>
-                    Review:
                     <input
                         type="text"
                         name="review"
@@ -38,10 +35,7 @@ const NewReviewForm = ({ postNewReview, currentUser }) => {
                         value={newReview.review}
                     />
                 </label>
-
-                <div className="button-group">
-                    <input className="button" type="submit" value="Submit" />
-                </div>
+                <input className="button" type="submit" value="Submit" />
             </form>
         </div>
     )

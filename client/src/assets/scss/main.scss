@@ -141,3 +141,14 @@ body {
 .form-style {
   text-align: center;
 }
+
+input[type=submit] {
+  color: #030101;
+  padding:5px 15px;
+  background:#ccc;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
