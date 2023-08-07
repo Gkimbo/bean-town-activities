@@ -2,5 +2,6 @@
 const User = require("./User.js");
 const Category = require("./Category.js");
 const Activity = require("./Activity.js");
+const Review = require("./Review.js")
 
-module.exports = { Activity, User, Category };
+module.exports = { Activity, User, Category, Review };

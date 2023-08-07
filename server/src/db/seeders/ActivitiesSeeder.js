@@ -61,10 +61,10 @@ class ActivitiesSeeder {
                 description: "Its a mall, not much more to add",
                 categoryId: shopping.id
             },
-            { 
-                name: "GNC", 
-                description: "Steroids without the hassle", 
-                categoryId: shopping.id 
+            {
+                name: "GNC",
+                description: "Steroids without the hassle",
+                categoryId: shopping.id
             },
             {
                 name: "Marshalls",
@@ -73,9 +73,9 @@ class ActivitiesSeeder {
             }
         ]
 
-        for(const activity of activityData){
-            const currentActivity = await Activity.query().findOne({name: activity.name})
-            if(!currentActivity){
+        for (const activity of activityData) {
+            const currentActivity = await Activity.query().findOne({ name: activity.name })
+            if (!currentActivity) {
                 await Activity.query().insert(activity)
             }
         }
