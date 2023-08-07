@@ -42,7 +42,11 @@ const EditReviews = (props) => {
     return (
       <li key={id}>
         {content}
-        <div onClick={() => handleDelete(id)}>Delete</div>
+        <div className="button-delete" onClick={() => handleDelete(id)}>
+        <span>Delete</span>
+  <svg viewBox="-5 -5 110 110" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 C0,0 100,0 100,0 C100,0 100,100 100,100 C100,100 0,100 0,100 C0,100 0,0 0,0"/>
+  </svg></div>
       </li>
     );
   });
