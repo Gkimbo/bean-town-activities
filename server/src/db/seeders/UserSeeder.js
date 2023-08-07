@@ -4,21 +4,17 @@ class UserSeeder {
     static async seed() {
         const userData = [
             {
-                name: "John Doe",
-                userName: "JohnnyBoy",
                 email: "JohnnyBoy@gmail.com",
                 password: "JohnnyBoy123"
             },
             {
-                name: "Jane Doe",
-                userName: "JaneTheMain",
                 email: "JainDoe@gmail.com",
                 password: "abc123"
             }
         ]
 
         for (const oneUser of userData) {
-            const currentUser = await User.query().findOne({ name: oneUser.userName })
+            const currentUser = await User.query().findOne({ email: oneUser.email })
             if (!currentUser) {
                 await User.query().insert(oneUser)
             }

@@ -26,11 +26,9 @@ class User extends uniqueFunc(Model) {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["email", "name", "userName"],
+      required: ["email"],
       properties: {
         email: { type: "string", pattern: "^\\S+@\\S+\\.\\S+$" },
-        name: {type: "string"},
-        userName: {type: "string"},
         cryptedPassword: { type: "string" },
       },
     };
@@ -49,19 +47,6 @@ class User extends uniqueFunc(Model) {
   static get relationMappings() {
     const { Review, Activity } = require("./index.js")
     return {
-      activities: {
-        relation: Model.ManyToManyRelation,
-        modelClass: Activity,
-        join: {
-          from: "users.id",
-          through: {
-            from: "reviews.userId",
-            to: "reviews.activityId"
-          },
-          to: "activities.id"
-        }
-      },
-
       reviews: {
         relation: Model.HasManyRelation,
         modelClass: Review,

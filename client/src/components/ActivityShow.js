@@ -6,6 +6,7 @@ const ActivityShow = (props) => {
     name: "",
     location: "",
     description: "",
+    reviews: []
   });
 
   const activityId = props.computedMatch.params.id;
@@ -36,7 +37,7 @@ const ActivityShow = (props) => {
         <p>{activity.description}</p>
       </div>
       <div className="activity-container cell auto">
-        <ReviewsShowPage id={activityId} />
+        <ReviewsShowPage reviews={activity.reviews}/>
       </div>
     </div>
   );

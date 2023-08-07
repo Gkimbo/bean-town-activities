@@ -28,26 +28,12 @@ class Activity extends Model {
                     to: "categories.id"
                 }
             },
-
             reviews: {
                 relation: Model.HasManyRelation,
                 modelClass: Review,
                 join: {
                     from: "activities.id",
                     to: "reviews.activityId"
-                }
-            },
-
-            users: {
-                relation: Model.ManyToManyRelation,
-                modelClass: User,
-                join: {
-                    from: "activities.id",
-                    through: {
-                        from: "reviews.activityId",
-                        to: "reviews.userId"
-                    },
-                    to: "users.id"
                 }
             }
         }

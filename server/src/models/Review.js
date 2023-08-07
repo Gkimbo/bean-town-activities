@@ -8,9 +8,9 @@ class Review extends Model {
     static get jsonSchema() {
         return {
             type: "object",
-            required: ["review"],
+            required: ["content"],
             properties: {
-                review: { type: "string" }
+                content: { type: "string" }
             }
         }
     }
@@ -27,7 +27,6 @@ class Review extends Model {
                     to: "users.id"
                 }
             },
-
             activity: {
                 relation: Model.BelongsToOneRelation,
                 modelClass: Activity,
