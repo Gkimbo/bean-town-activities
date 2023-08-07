@@ -3,14 +3,17 @@ import { Review } from "../../../models/index.js"
 import { ValidationError } from "objection";
 import cleanUserInput from "../../../services/cleanUserInput.js";
 
-const reviewsRouter = new express.Router({ mergeParams: true })
+const reviewRouter = new express.Router({ mergeParams: true })
 
-reviewsRouter.post("/", async (req,res)=>{
+reviewRouter.post("/", async (req,res)=>{
     const newReview = cleanUserInput(req.body)
-    const {review , userId} = newReview
-    const {activityId} = req.params
+    const {content , userId} = newReview
+    console.log("new review", newReview)
+    const {id} = req.params
+    const activityId = id
+    console.log("activity id",req.params.id)
     try{
-        const newReview = await Review.query().insertAndFetch({review, activityId, userId})
+        const newReview = await Review.query().insertAndFetch({content, activityId , userId})
         console.log(newReview)
         return res.status(201).json({review: newReview})
     }catch(error){
@@ -21,4 +24,4 @@ reviewsRouter.post("/", async (req,res)=>{
     }
 })
 
-export default reviewsRouter
+export default reviewRouter

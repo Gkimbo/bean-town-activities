@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 const NewReviewForm = ({ postNewReview, currentUser }) => {
     const [newReview, setNewReview] = useState({
-        review: ""
+        content: ""
     })
 
     const handleInputChange = event => {
@@ -20,7 +20,7 @@ const NewReviewForm = ({ postNewReview, currentUser }) => {
 
     const clearForm = () => {
         setNewReview({
-            review: ""
+            content: ""
         })
     }
 
@@ -30,9 +30,9 @@ const NewReviewForm = ({ postNewReview, currentUser }) => {
                 <label>
                     <input
                         type="text"
-                        name="review"
+                        name="content"
                         onChange={handleInputChange}
-                        value={newReview.review}
+                        value={newReview.content}
                     />
                 </label>
                 <input className="button" type="submit" value="Submit" />
