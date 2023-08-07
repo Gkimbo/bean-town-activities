@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import EditReviews from "./EditReviews";
 
 const ActivityShow = (props) => {
   const [activity, setActivity] = useState({
@@ -7,8 +9,8 @@ const ActivityShow = (props) => {
     description: "",
   });
 
+  const activityId = props.computedMatch.params.id;
   const getActivity = async () => {
-    const activityId = props.computedMatch.params.id;
     try {
       const response = await fetch(`/api/v1/activities/${activityId}`);
       if (!response.ok) {
@@ -29,11 +31,17 @@ const ActivityShow = (props) => {
   }, []);
 
   return (
-    <div className="activity-container activity-show">
-      <h3 className="activity-title">{activity.name}</h3>
-      <p>{activity.location}</p>
-      <p>{activity.description}</p>
-    </div>
+    <>
+      <div className="activity-container activity-show">
+        <h3 className="activity-title">{activity.name}</h3>
+        <p>{activity.location}</p>
+        <p>{activity.description}</p>
+      </div>
+      <div className="containerBtn">
+        <div className="btn"><Link to={`/reviews/${activityId}`}> Edit Review!</Link></div>
+        <div className="btn"><a>X</a></div>
+      </div>
+    </>
   );
 };
 

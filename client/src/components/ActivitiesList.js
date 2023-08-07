@@ -26,9 +26,11 @@ const ActivitiesList = (props) => {
 
   const listOfActivities = category.activities.map((activity) => {
     return (
-      <li key={activity.id} className="btn-2">
-        <Link to={`/activities/${activity.id}`}>{activity.name}</Link>
-      </li>
+      <div key={activity.id} className="containerBtn">
+        <div className="btn">
+          <Link to={`/activities/${activity.id}`}>{activity.name}</Link>
+        </div>
+      </div>
     );
   });
 

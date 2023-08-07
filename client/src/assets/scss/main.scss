@@ -19,8 +19,11 @@
   --font-size: 1rem;
   --font-weight: 400;
   --line-height: 1.5;
-  --color: #333;
+  --color: #004643;
   --background-color: #ccc;
+  --button-color: #f9bc60;
+  --tile-color: #abd1c6;
+  --button-text: #001e1d;
 }
 
 //define global styles
@@ -31,7 +34,7 @@ body {
   font-weight: var(--font-weight);
   line-height: var(--line-height);
   color: var(--color);
-  background: linear-gradient(to bottom, #f5f5f5 0%, rgb(158, 158, 231) 100%);
+  background: linear-gradient(to bottom, var(--background-color) 0%, var(--color) 100%);
   height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,27 +78,10 @@ body {
   width: 70%;
 }
 
-.btn-2 {
-  border: 0 solid;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0);
-  outline: 1px solid;
-  outline-color: rgba(255, 255, 255, .5);
-  outline-offset: 0px;
-  text-shadow: none;
-  transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
-} 
-
-.btn-2:hover {
-  border: 1px solid;
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, .5), 0 0 20px rgba(255, 255, 255, .2);
-  outline-color: rgba(255, 255, 255, 0);
-  outline-offset: 15px;
-  text-shadow: 1px 1px 2px #427388; 
+.categories-list a{
+  color: var(--button-text);
 }
 
-.btn-2 a {
-  color:#fff;
-}
 
 .activity-container {
   display: flex;
@@ -107,8 +93,8 @@ body {
   margin-left: 10%;
   margin-top: 5%;
   padding:4%;
-  background: #28296f;
-  color: #f5f5f5;
+  background: var(--tile-color);
+  color: #000000;
   border-radius: 25px;
 }
 
@@ -117,7 +103,6 @@ body {
   padding-left: 3%;
   text-align: center;
 }
-
 
 .activity-tile {
   width: 90%;
@@ -140,4 +125,103 @@ body {
 
 .form-style{
   text-align: center;
+}
+
+.containerBtn {
+	width: 1000px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+}
+.containerBtn .btn {
+	position: relative;
+	top: 0;
+	left: 0;
+	width: 250px;
+	height: 50px;
+	margin: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.containerBtn .btn a {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: rgba(255, 255, 255, 0.05);
+	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.3);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	border-top: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 30px;
+	padding: 10px;
+	letter-spacing: 1px;
+	text-decoration: none;
+	overflow: hidden;
+	color: var(--button-text);
+	font-weight: 400px;
+	z-index: 1;
+	transition: 0.5s;
+	backdrop-filter: blur(15px);
+}
+.containerBtn .btn:hover a {
+	letter-spacing: 3px;
+}
+.containerBtn .btn a::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	background: linear-gradient(to left, rgba(255, 255, 255, 0.15), transparent);
+	transform: skewX(45deg) translate(0);
+	transition: 0.5s;
+	filter: blur(0px);
+}
+.containerBtn .btn:hover a::before {
+	transform: skewX(45deg) translate(200px);
+}
+.containerBtn .btn::before {
+	content: "";
+	position: absolute;
+	left: 50%;
+	transform: translatex(-50%);
+	bottom: -5px;
+	width: 30px;
+	height: 10px;
+	background: var(--button-color);
+	border-radius: 10px;
+	transition: 0.5s;
+	transition-delay: 0.5;
+}
+.containerBtn .btn:hover::before /*lightup button*/ {
+	bottom: 0;
+	height: 50%;
+	width: 80%;
+	border-radius: 30px;
+}
+
+.containerBtn .btn::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	transform: translatex(-50%);
+	top: -5px;
+	width: 30px;
+	height: 10px;
+	background: var(--button-color);
+	border-radius: 10px;
+	transition: 0.5s;
+	transition-delay: 0.5;
+}
+.containerBtn .btn:hover::after /*lightup button*/ {
+	top: 0;
+	height: 50%;
+	width: 80%;
+	border-radius: 30px;
 }
