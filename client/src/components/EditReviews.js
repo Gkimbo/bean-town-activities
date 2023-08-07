@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const EditReviews = (props) => {
-  const [reviewsToEdit, setReviewsToEdit] = useState([{id: 1, review: "Good stuff"}])
+  const [reviewsToEdit, setReviewsToEdit] = useState([])
 
     const getReviews = async () =>{
         try {

@@ -8,7 +8,7 @@ const ActivityShow = (props) => {
     name: "",
     location: "",
     description: "",
-    reviews: []
+    reviews: [],
   });
 
   const activityId = props.computedMatch.params.id;
@@ -33,21 +33,27 @@ const ActivityShow = (props) => {
 
   return (
     <>
-    <div className="grid-x">
-      <div className="activity-container activity-show cell small-4">
-        <h3 className="activity-title">{activity.name}</h3>
-        <p>{activity.location}</p>
-        <p>{activity.description}</p>
+      <div className="grid-x">
+        <div className="activity-show cell small-6">
+          <div className="activity-container">
+            <h3 className="activity-title">{activity.name}</h3>
+            <p>{activity.location}</p>
+            <p>{activity.description}</p>
+          </div>
+        </div>
+        <div className="cell small-6">
+        <div className="activity-container">
+          <ReviewsShowPage reviews={activity.reviews} />
+          </div>
+        </div>
+        <div className="containerBtn">
+          <div className="btn">
+            <Link to={`/reviews/${activityId}`}> Edit Review!</Link>
+          </div>
+        </div>
+        
       </div>
-      <div className="containerBtn">
-        <div className="btn"><Link to={`/reviews/${activityId}`}> Edit Review!</Link></div>
-      </div>
-      <div className="activity-container cell auto">
-        <ReviewsShowPage reviews={activity.reviews}/>
-      </div>
-    </div>
     </>
-
   );
 };
 
