@@ -27,7 +27,7 @@ const ReviewsShowPage = ({ id }) => {
 
   return (
     <>
-      <h1> Review! </h1>
+      <h1>Reviews</h1>
       <ul>{listOfReviews}</ul>
     </>
   );
