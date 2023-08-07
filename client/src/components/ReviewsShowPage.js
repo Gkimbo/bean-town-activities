@@ -3,8 +3,8 @@ import ErrorList from "./registration/components/layout/ErrorList";
 import translateServerErrors from "../services/translateServerErrors"
 import NewReviewForm from "./NewReviewForm";
 
-const ReviewsShowPage = ({ id, currentUser, activityName, reviews }) => {
-  const [reviewList, setReviewList] = useState([]);
+const ReviewsShowPage = ({ id, currentUser, activityName, reviews , reviewList , setReviewList }) => {
+
   const [errors, setErrors] = useState([])
 
   const postReview = async (newReview) => {

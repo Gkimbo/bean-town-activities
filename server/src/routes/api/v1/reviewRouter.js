@@ -8,10 +8,7 @@ const reviewRouter = new express.Router({ mergeParams: true })
 reviewRouter.post("/", async (req,res)=>{
     const newReview = cleanUserInput(req.body)
     const {content , userId} = newReview
-    console.log("new review", newReview)
-    const {id} = req.params
-    const activityId = id
-    console.log("activity id",req.params.id)
+    const activityId = req.params.id
     try{
         const newReview = await Review.query().insertAndFetch({content, activityId , userId})
         console.log(newReview)

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReviewsShowPage from "./ReviewsShowPage";
 
 const ActivityShow = (props) => {
+  const [reviewList, setReviewList] = useState([]);
   const [activity, setActivity] = useState({
     name: "",
     location: "",
@@ -27,7 +28,7 @@ const ActivityShow = (props) => {
 
   useEffect(() => {
     getActivity();
-  }, []);
+  }, [reviewList]);
 
   return (
     <div className="grid-x">
@@ -42,6 +43,8 @@ const ActivityShow = (props) => {
           currentUser={props.user.id}
           activityName={activity.name}
           reviews={activity.reviews}
+          reviewList={reviewList}
+          setReviewList={setReviewList}
         />
         </div>
     </div>
