@@ -1,42 +1,47 @@
-import { Review } from "../../models/index.js"
-
+import { Activity, Review, User } from "../../models/index.js"
 class ReviewsSeeder {
     static async seed() {
+        const john = await User.query().findOne({email: "JohnnyBoy@gmail.com"})
+        const jane = await User.query().findOne({email: "JainDoe@gmail.com"})
+        const jjf = await Activity.query().findOne({name: "J.J. Foley's"})
+        const sideBar = await Activity.query().findOne({name: "Sidebar"})
+        const theHub = await Activity.query().findOne({name: "The Hub Pub"})
+        const alley = await Activity.query().findOne({name: "Alley Bar"})
         const reviewsData = [
             {
-                review: "Great Bar and Grille fun Irish vibes!",
-                userId: 1,
-                activityId: 1
+                content: "Great Bar and Grille fun Irish vibes!",
+                userId: john.id,
+                activityId: jjf.id
             },
             {
-                review: "Fun spot, great bar!",
-                userId: 1,
-                activityId: 1
+                content: "Fun spot, great bar!",
+                userId: john.id,
+                activityId: jjf.id
             },
             {
-                review: "Great cocktails, better times",
-                userId: 1,
-                activityId: 2
+                content: "Great cocktails, better times",
+                userId: john.id,
+                activityId: sideBar.id
             },
             {
-                review: "Love being outside, great service!",
-                userId: 1,
-                activityId: 3
+                content: "Love being outside, great service!",
+                userId: john.id,
+                activityId: theHub.id
             },
             {
-                review: "Expensive drinks but great Karaoke",
-                userId: 2,
-                activityId: 4
+                content: "Expensive drinks but great Karaoke",
+                userId: jane.id,
+                activityId: alley.id
             },
             {
-                review: "Not worth the wait",
-                userId: 2,
-                activityId: 4
+                content: "Not worth the wait",
+                userId: jane.id,
+                activityId: alley.id
             }
         ]
 
         for (const oneReview of reviewsData) {
-            const currentReview = await Review.query().findOne({ review: oneReview.review })
+            const currentReview = await Review.query().findOne({ content: oneReview.content })
             if (!currentReview) {
                 await Review.query().insert(oneReview)
             }

@@ -3,27 +3,9 @@ import ErrorList from "./registration/components/layout/ErrorList";
 import translateServerErrors from "../services/translateServerErrors"
 import NewReviewForm from "./NewReviewForm";
 
-const ReviewsShowPage = ({ id, currentUser, activityName }) => {
+const ReviewsShowPage = ({ id, currentUser, activityName, reviews }) => {
   const [reviewList, setReviewList] = useState([]);
   const [errors, setErrors] = useState([])
-
-  const getReviews = async () => {
-    try {
-      const response = await fetch(`/api/v1/activities/${id}/reviews`);
-      if (!response.ok) {
-        const error = new Error(`${response.status} (${response.statusText})`);
-        throw error;
-      }
-      const body = await response.json();
-      setReviewList(body.reviews);
-    } catch (error) {
-      console.error(`Error in fetch: ${err.message}`);
-    }
-  };
-
-  useEffect(() => {
-    getReviews();
-  }, []);
 
   const postReview = async (newReview) => {
     try {
@@ -54,9 +36,10 @@ const ReviewsShowPage = ({ id, currentUser, activityName }) => {
     }
   }
 
-  const listOfReviews = reviewList.map((reviewItem) => {
-    return <li key={reviewItem.id}>{reviewItem.review}</li>;
+  const listOfReviews = reviews.map(({id, content}) => {
+    return <li key={id}>{content}</li>;
   });
+
 
   let reviewContent
   if (listOfReviews.length === 0) {
