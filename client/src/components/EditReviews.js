@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 
 const EditReviews = (props) => {
-  const [reviewsToEdit, setReviewsToEdit] = useState([])
-
+  const [reviewsToEdit, setReviewsToEdit] = useState([]);
+  console.log(reviewsToEdit)
     const getReviews = async () =>{
         try {
-            const response = await fetch(`/api/v1/activities/${props.match.params.id}/reviews`)
+            const response = await fetch(`/api/v1/activities/${props.match.params.id}`)
             if(!response){
                 const error = new Error(`${response.status} (${response.statusText})`)
                 throw error
             }
             const responseData = await response.json()
-            console.log(responseData)
-            setReviewsToEdit(responseData.reviews)
+            setReviewsToEdit(responseData.activity.reviews)
         } catch (error) {
             console.error("Error in fetch!", error.message)
         }
@@ -43,10 +42,10 @@ const EditReviews = (props) => {
         removeReview(event.target.id)
     }
 
-    const listOfReviews = reviewsToEdit.map(({id, review}) => {
+    const listOfReviews = reviewsToEdit.map(({id, content}) => {
     return (
       <li key={id}>
-        {review}
+        {content}
         <button class="noselect" onClick={handleDelete}>
           <span class="text">Delete</span>
           <span class="icon">

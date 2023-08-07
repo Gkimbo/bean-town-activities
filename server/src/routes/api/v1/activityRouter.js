@@ -1,8 +1,10 @@
 import express from "express"
 import { Activity } from "../../../models/index.js"
 import ActivitySerializer from "../../../serializers/ActivitySerializer.js"
+import reviewsRouter from "./reviewRouter.js"
 
 const activityRouter = new express.Router()
+activityRouter.use("/:activitiesId/reviews", reviewsRouter)
 
 activityRouter.get("/:id", async (req, res) => {
     const activityId = req.params.id
