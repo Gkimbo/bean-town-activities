@@ -141,6 +141,7 @@ body {
   font: 700 1.2rem 'Roboto Slab', sans-serif;
   padding: 1em 2em;
   letter-spacing: 0.05rem;
+
   &:focus {
     outline: 2px dotted #55d7dc;
   }
@@ -444,12 +445,10 @@ body {
 
 input[type=submit] {
   color: #030101;
-  padding:5px 15px;
-  background:#ccc;
-  border:0 none;
-  cursor:pointer;
+  padding: 5px 15px;
+  background: #ccc;
+  border: 0 none;
+  cursor: pointer;
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
-
-
