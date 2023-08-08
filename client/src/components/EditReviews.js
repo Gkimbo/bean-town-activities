@@ -42,8 +42,6 @@ const EditReviews = (props) => {
   };
 
   const listOfReviews = reviewsToEdit.map((review) => {
-    console.log("inside list of reviews map, review.userId: ", review.userId)
-    console.log("inside list of reviews map, currentUser: ", currentUser)
     if (currentUser === review.userId) {
       return (
         <div>
