@@ -3,7 +3,7 @@ import ErrorList from "./registration/components/layout/ErrorList";
 import translateServerErrors from "../services/translateServerErrors"
 import NewReviewForm from "./NewReviewForm";
 
-const ReviewsShowPage = ({ id, currentUser, activityName, reviews , reviewList , setReviewList }) => {
+const ReviewsShowPage = ({ id, currentUser, activityName, reviews, reviewList, setReviewList }) => {
 
   const [errors, setErrors] = useState([])
 
@@ -36,7 +36,7 @@ const ReviewsShowPage = ({ id, currentUser, activityName, reviews , reviewList ,
     }
   }
 
-  const listOfReviews = reviews.map(({id, content}) => {
+  const listOfReviews = reviews.map(({ id, content }) => {
     return <li key={id}>{content}</li>;
   });
 
@@ -50,16 +50,16 @@ const ReviewsShowPage = ({ id, currentUser, activityName, reviews , reviewList ,
 
   return (
     <div className="review-show-box">
-      <div className="reviews">
-        <h4>Reviews</h4>
-        {reviewContent}
-        <ErrorList errors={errors} />
-      </div>
       <div className="review-form">
         <h5>Share your thoughts on {activityName} !!</h5>
         <NewReviewForm
           postNewReview={postReview}
           currentUser={currentUser} />
+      </div>
+      <div className="reviews">
+        <h4>Reviews</h4>
+        {reviewContent}
+        <ErrorList errors={errors} />
       </div>
     </div>
   );
