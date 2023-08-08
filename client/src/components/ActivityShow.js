@@ -49,7 +49,7 @@ const ActivityShow = (props) => {
       } else {
         const reviewData = await response.json()
         setErrors([])
-        setActivity({ ...activity }, activity.reviews.push(reviewData.review))
+        setActivity({ ...activity , reviews: [...activity.reviews , reviewData.review]})
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
