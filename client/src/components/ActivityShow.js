@@ -90,7 +90,7 @@ const ActivityShow = (props) => {
       </div>
       <div className="cell small-12">
         <Link className="btn-hover color-1" to={`/reviews/${activityId}`}>
-          Edit Review!
+          Delete Review!
         </Link>
       </div>
     </div>

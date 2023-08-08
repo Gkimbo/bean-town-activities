@@ -68,7 +68,7 @@ const EditReviews = (props) => {
 
   return (
     <div className="reviews-edit activity-container">
-      <h1>Edit your reviews!</h1>
+      <h1>Delete your reviews!</h1>
       <ul>{listOfReviews}</ul>
     </div>
   );
