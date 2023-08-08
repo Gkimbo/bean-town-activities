@@ -11,7 +11,6 @@ reviewRouter.post("/", async (req,res)=>{
     const activityId = req.params.id
     try{
         const newReview = await Review.query().insertAndFetch({content, activityId , userId})
-        console.log(newReview)
         return res.status(201).json({review: newReview})
     }catch(error){
         if (error instanceof ValidationError){
