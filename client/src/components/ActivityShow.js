@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import ReviewsShowPage from "./ReviewsShowPage";
+import translateServerErrors from "../services/translateServerErrors";
 
 const ActivityShow = (props) => {
-  const [reviewList, setReviewList] = useState([]);
+  const [errors, setErrors] = useState([])
   const [activity, setActivity] = useState({
     name: "",
     location: "",
@@ -26,9 +27,38 @@ const ActivityShow = (props) => {
     }
   };
 
+  const postReview = async (newReview) => {
+    try {
+      const response = await fetch(`/api/v1/activities/${activityId}/reviews`, {
+        method: "POST",
+        headers: new Headers({
+          "Content-Type": "application/json"
+        }),
+        body: JSON.stringify(newReview)
+      })
+      if (!response.ok) {
+        if (response.status === 422) {
+          const errorBody = await response.json()
+          const newErrors = translateServerErrors(errorBody.errors)
+          return setErrors(newErrors)
+        } else {
+          const errorMessage = `${response.status} (${response.statusText})`
+          const error = new Error(errorMessage)
+          throw error
+        }
+      } else {
+        const reviewData = await response.json()
+        setErrors([])
+        setActivity({ ...activity }, activity.reviews.push(reviewData.review))
+      }
+    } catch (error) {
+      console.error(`Error in fetch: ${error.message}`)
+    }
+  }
+
   useEffect(() => {
     getActivity();
-  }, [reviewList]);
+  }, []);
 
   return (
     <div className="grid-x">
@@ -39,14 +69,12 @@ const ActivityShow = (props) => {
       </div>
       <div className="activity-container cell auto">
         <ReviewsShowPage
-          id={activityId}
-          currentUser={props.user.id}
+          errors={errors}
+          postReview={postReview}
           activityName={activity.name}
           reviews={activity.reviews}
-          reviewList={reviewList}
-          setReviewList={setReviewList}
         />
-        </div>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-const NewReviewForm = ({ postNewReview, currentUser }) => {
+const NewReviewForm = ({ postNewReview }) => {
     const [newReview, setNewReview] = useState({
         content: ""
     })
@@ -14,7 +14,7 @@ const NewReviewForm = ({ postNewReview, currentUser }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        postNewReview({ ...newReview, userId: currentUser })
+        postNewReview({ ...newReview })
         clearForm()
     }
 

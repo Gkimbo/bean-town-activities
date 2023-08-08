@@ -1,4 +1,5 @@
 import { Activity, Review, User } from "../../models/index.js"
+
 class ReviewsSeeder {
     static async seed() {
         const john = await User.query().findOne({email: "JohnnyBoy@gmail.com"})

@@ -8,7 +8,6 @@ class UserSeeder {
                 password: "JohnnyBoy123"
             },
             {
-
                 email: "JainDoe@gmail.com",
                 password: "abc123"
             }
