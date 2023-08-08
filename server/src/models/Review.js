@@ -27,7 +27,7 @@ class Review extends Model {
                     to: "users.id"
                 }
             },
-            activity: {
+           activity: {
                 relation: Model.BelongsToOneRelation,
                 modelClass: Activity,
                 join: {

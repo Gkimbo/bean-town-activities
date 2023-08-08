@@ -1,5 +1,4 @@
 import ReviewSerializer from "./ReviewSerializer.js"
-
 class ActivitySerializer {
     static async getSummaryOfOne(activity) {
         const acceptedAttributes = ["id", "name", "description", "location"]
@@ -14,6 +13,7 @@ class ActivitySerializer {
     }
 
     static getSummaryOfArray(activityArray) {
+
         const acceptedAttributes = ["id", "name", "description", "location"]
 
         const serializedActivity = activityArray.map((activity) => {
