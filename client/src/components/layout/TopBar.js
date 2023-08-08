@@ -23,7 +23,7 @@ const TopBar = ({ user }) => {
   ];
 
   return (
-    <div className="top-bar">
+    <div className="top-bar make-transparent">
       <div className="top-bar-left">
         <ul className="menu">
           <li>
