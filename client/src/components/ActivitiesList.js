@@ -34,10 +34,12 @@ const ActivitiesList = (props) => {
   });
 
   return (
-    <div className="text-center activity-container">
-      <div className="no-dot-list">
-        <h1>{category.name}</h1>
-        <ul>{listOfActivities}</ul>
+    <div className="grid-x align-center-middle text-center">
+      <div className="text-center cell activity-list-container small-3 align-center">
+        <div className="no-dot-list">
+          <h1 className="title-text">{category.name}</h1>
+          <ul>{listOfActivities}</ul>
+        </div>
       </div>
     </div>
   );

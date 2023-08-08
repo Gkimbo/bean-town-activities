@@ -87,10 +87,10 @@ const RegistrationForm = () => {
 
   return (
     <div className="grid-container">
-      <h1 className="form-style">Register</h1>
+      <h1 className="form-style title-text">Register</h1>
       <form onSubmit={onSubmit} className="form-style">
         <div>
-          <label>
+          <label className="title-text">
             Email
             <input 
             type="text" 
@@ -102,7 +102,7 @@ const RegistrationForm = () => {
           </label>
         </div>
         <div>
-          <label>
+          <label className="title-text">
             Password
             <input
               type="password"
@@ -115,7 +115,7 @@ const RegistrationForm = () => {
           </label>
         </div>
         <div>
-          <label>
+          <label className="title-text">
             Password Confirmation
             <input
               type="password"
@@ -128,7 +128,7 @@ const RegistrationForm = () => {
           </label>
         </div>
         <div>
-          <input type="submit" className="button" value="Register" />
+          <input type="submit" className="btn-3 draw-border sign-in-button" value="Register" />
         </div>
       </form>
     </div>

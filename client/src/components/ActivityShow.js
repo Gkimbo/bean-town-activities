@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import EditReviews from "./EditReviews";
 import ReviewsShowPage from "./ReviewsShowPage";
 
 const ActivityShow = (props) => {
@@ -32,28 +31,25 @@ const ActivityShow = (props) => {
   }, []);
 
   return (
-    <>
-      <div className="grid-x">
-        <div className="activity-show cell small-6">
-          <div className="activity-container">
-            <h3 className="activity-title">{activity.name}</h3>
-            <p>{activity.location}</p>
-            <p>{activity.description}</p>
-          </div>
+    <div className="grid-x ">
+      <div className="activity-show cell small-6">
+        <div className="activity-show-container">
+          <h3 className="activity-title">{activity.name}</h3>
+          <ul className="no-dot-list">
+            <li><strong>Address: </strong>{activity.location}</li>
+            <li><strong>Description: </strong>{activity.description}</li>
+          </ul>
         </div>
-        <div className="cell small-6">
+      </div>
+      <div className="cell small-6">
         <div className="activity-container">
           <ReviewsShowPage reviews={activity.reviews} />
-          </div>
         </div>
-        <div className="containerBtn">
-          <div className="btn">
-            <Link to={`/reviews/${activityId}`}> Edit Review!</Link>
-          </div>
-        </div>
-        
       </div>
-    </>
+      <div className="cell small-12">
+        <Link className="btn-hover color-1" to={`/reviews/${activityId}`}>Edit Review!</Link>
+      </div>
+    </div>
   );
 };
 
