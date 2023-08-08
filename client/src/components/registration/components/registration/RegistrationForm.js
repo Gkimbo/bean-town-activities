@@ -87,48 +87,41 @@ const RegistrationForm = () => {
 
   return (
     <div className="grid-container">
-      <h1 className="form-style title-text">Register</h1>
-      <form onSubmit={onSubmit} className="form-style">
+      <h1>Register</h1>
+      <form onSubmit={onSubmit}>
         <div>
-          <label className="title-text">
+          <label>
             Email
-            <input
-            type="text"
-            name="email"
-            value={userPayload.email}
-            className="text-box"
-            onChange={onInputChange} />
+            <input type="text" name="email" value={userPayload.email} onChange={onInputChange} />
             <FormError error={errors.email} />
           </label>
         </div>
         <div>
-          <label className="title-text">
+          <label>
             Password
             <input
               type="password"
               name="password"
               value={userPayload.password}
-              className="text-box"
               onChange={onInputChange}
             />
             <FormError error={errors.password} />
           </label>
         </div>
         <div>
-          <label className="title-text">
+          <label>
             Password Confirmation
             <input
               type="password"
               name="passwordConfirmation"
               value={userPayload.passwordConfirmation}
-              className="text-box"
               onChange={onInputChange}
             />
             <FormError error={errors.passwordConfirmation} />
           </label>
         </div>
         <div>
-          <input type="submit" className="btn-3 draw-border sign-in-button" value="Register" />
+          <input type="submit" className="button" value="Register" />
         </div>
       </form>
     </div>

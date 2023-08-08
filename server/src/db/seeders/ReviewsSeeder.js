@@ -32,7 +32,7 @@ class ReviewsSeeder {
             {
                 content: "Expensive drinks but great Karaoke",
                 userId: jane.id,
-                activityId: alley.id 
+                activityId: alley.id
             },
             {
                 content: "Not worth the wait",

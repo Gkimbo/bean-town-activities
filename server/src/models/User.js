@@ -45,7 +45,7 @@ class User extends uniqueFunc(Model) {
   }
 
   static get relationMappings() {
-    const { Review, Activity } = require("./index.js")
+    const { Review } = require("./index.js")
     return {
       reviews: {
         relation: Model.HasManyRelation,
