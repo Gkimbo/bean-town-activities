@@ -12,6 +12,7 @@ import AuthenticatedRoute from "./authentication/AuthenticatedRoute";
 import HomePage from "./HomePage";
 
 import ActivityShow from "./ActivityShow";
+import EditReviews from "./EditReviews";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -45,7 +46,7 @@ const App = (props) => {
           component={ActivityShow}
           user={currentUser}
         />
-
+        <Route exact path="/reviews/:id" component={EditReviews} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
       </Switch>

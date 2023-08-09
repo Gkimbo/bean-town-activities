@@ -3,9 +3,8 @@ import getClientIndexPath from "../config/getClientIndexPath.js"
 
 const router = new express.Router()
 
-const clientRoutes = ["/", "/categories/:id", "/user-sessions/new", "/users/new", "/activities/:id"]
-
-const authedClientRoutes = ["/profile"]
+const clientRoutes = ["/", "/activities/:id", "/categories/:id", "/user-sessions/new", "/users/new", "/reviews/:id"];
+const authedClientRoutes = ["/profile"];
 
 router.get(authedClientRoutes, (req, res) => {
     if (req.user) {
