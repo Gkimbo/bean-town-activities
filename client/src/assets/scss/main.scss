@@ -380,6 +380,7 @@ body {
 }
 
 
+
 @mixin btn-border-drawing($color: #ccc, $hover: black, $width: 2px, $vertical: top, $horizontal: left, $duration: 0.25s) {
   box-shadow: inset 0 0 0 $width $color;
   color: $color;
@@ -438,3 +439,18 @@ body {
 .draw-border {
   @include btn-border-drawing(#abd1c6, var(--button-color), 4px, bottom, right);
 }
+
+.form-style {
+  text-align: center;
+}
+
+input[type=submit] {
+  color: #030101;
+  padding:5px 15px;
+  background:#ccc;
+  border:0 none;
+  cursor:pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+

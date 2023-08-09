@@ -18,7 +18,7 @@ class Activity extends Model {
     }
 
     static get relationMappings() {
-        const { Category, Review, User } = require("./index.js")
+        const { Category, Review} = require("./index.js")
         return {
             category: {
                 relation: Model.BelongsToOneRelation,
