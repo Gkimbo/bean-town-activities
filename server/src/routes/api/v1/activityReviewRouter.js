@@ -1,5 +1,5 @@
 import express from "express"
-import { Review } from "../../../models/index.js"
+import { Review, Rating } from "../../../models/index.js"
 import { ValidationError } from "objection";
 import cleanUserInput from "../../../services/cleanUserInput.js";
 
@@ -18,6 +18,15 @@ activityReviewRouter.post("/", async (req, res) => {
         if (error instanceof ValidationError) {
             return res.status(422).json({ errors: error.data })
         }
+        return res.status(500).json({ errors: error })
+    }
+})
+
+activityReviewRouter.post("/rating", async (req, res) => {
+    console.log(req.body)
+    try {
+        const newRating = await Rating.query().insert()
+    } catch (error) {
         return res.status(500).json({ errors: error })
     }
 })
