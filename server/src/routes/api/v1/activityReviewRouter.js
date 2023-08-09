@@ -1,7 +1,7 @@
 import express from "express"
 import { Review } from "../../../models/index.js"
-import { ValidationError } from "objection";
-import cleanUserInput from "../../../services/cleanUserInput.js";
+import { ValidationError } from "objection"
+import cleanUserInput from "../../../services/cleanUserInput.js"
 
 const activityReviewRouter = new express.Router({ mergeParams: true })
 
@@ -19,6 +19,16 @@ activityReviewRouter.post("/", async (req, res) => {
             return res.status(422).json({ errors: error.data })
         }
         return res.status(500).json({ errors: error })
+    }
+})
+
+activityReviewRouter.delete("/:id", async (req, res) => {
+    try {
+        const reviewToDelete = await Review.query().findById(req.params.id)
+        await reviewToDelete.$query().delete()
+        return res.status(200).json({ review: reviewToDelete })
+    } catch (err) {
+        return res.status(500).json({ errors: err })
     }
 })
 

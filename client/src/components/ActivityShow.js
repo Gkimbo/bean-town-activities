@@ -63,7 +63,7 @@ const ActivityShow = (props) => {
 
   return (
     <div className="grid-x ">
-      <div className="activity-show cell small-6">
+      <div className="activity-show cell small-12 medium-6">
         <div className="activity-show-container">
           <h3 className="activity-title">{activity.name}</h3>
           <ul className="no-dot-list">
@@ -79,7 +79,7 @@ const ActivityShow = (props) => {
         </div>
       </div>
 
-      <div className="cell small-6">
+      <div className="cell small-12 medium-6">
         <div className="activity-container">
           <ReviewsShowPage
             errors={errors}
@@ -91,7 +91,7 @@ const ActivityShow = (props) => {
       </div>
       <div className="cell small-12">
         <Link className="btn-hover color-1" to={`/reviews/${activityId}`}>
-          Edit Review!
+          Delete Review!
         </Link>
       </div>
     </div>
