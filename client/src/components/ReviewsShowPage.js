@@ -3,72 +3,63 @@ import ErrorList from "./registration/components/layout/ErrorList";
 import NewReviewForm from "./NewReviewForm";
 
 const ReviewsShowPage = ({ activityName, reviews, postReview, errors, activityId, user }) => {
-  const [rating, setRating] = useState({
-}); 
-  console.log(rating);
+  const [ratings, setRatings] = useState({});
 
-  const postRating = async (ratingObject) => {
+  const postRating = async (reviewId, selectedRating) => {
     try {
       const response = await fetch(`/api/v1/activities/${activityId}/reviews/rating`, {
         method: 'POST',
-        headers: new Headers({
+        headers: {
           'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify(ratingObject)
+        },
+        body: JSON.stringify({ reviewId, rating: selectedRating })
       });
 
-      if (!response.ok) { 
-        const error = new Error(`${response.status} (${response.statusText})`);
-        throw error;
+      if (!response.ok) {
+        throw new Error(`${response.status} (${response.statusText})`);
       }
 
       const responseData = await response.json();
-      console.log(responseData)
-      setRating(responseData);
+      setRatings({ ...ratings, [reviewId]: responseData.rating });
     } catch (error) {
       console.error('Error in fetch!', error.message);
     }
   };
 
   const handleRating = ({ reviewId, selectedRating }) => {
-    postRating({ reviewId, rating: selectedRating });
+    postRating(reviewId, selectedRating);
   };
 
-  const listOfReviews = reviews.map((review) => {
-    console.log(`Review ID: ${review.id}, User Rating: ${rating.rating}`);
-    return (
-      <li key={review.id}>
-        {review.content}
-        {review.id !== rating.reviewId && rating.rating == 2 ? (
-          <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 1 })}><i>Upvote</i></div>
-        ) : null}
-        {review.id !== rating.reviewId && rating.rating == 1? (
+  const listOfReviews = reviews.map((review) => (
+    <li key={review.id}>
+      {review.content}
+      {(review.id !== ratings.reviewId && ratings[review.id] === 2) && (
+        <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 1 })}><i>Upvote</i></div>
+      )}
+      {(review.id !== ratings.reviewId && ratings[review.id] === 1) && (
+        <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 2 })}><i>Downvote</i></div>
+      )}
+      {ratings[review.id] === undefined && (
+        <>
           <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 2 })}><i>Downvote</i></div>
-        ) : null}
-        {rating.rating === undefined ? (
-          <>
-            <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 2 })}><i>Downvote</i></div>
-            <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 1 })}><i>Upvote</i></div>
-          </>
-        ) : null}
-      </li>
-    );
-  });
+          <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 1 })}><i>Upvote</i></div>
+        </>
+      )}
+    </li>
+  ));
 
-  let reviewContent
-  if (listOfReviews.length === 0) {
+  let reviewContent;
+  if (listOfReviews.length === 0){
     reviewContent = <p>No reviews yet!</p>
-  } else {
+  } else{
     reviewContent = <ul>{listOfReviews}</ul>
   }
 
   return (
     <div className="review-show-box">
       <div className="review-form">
-        <h5>Share your thoughts on {activityName} !!</h5>
-        <NewReviewForm
-          postNewReview={postReview}
-        />
+        <h5>Share your thoughts on {activityName}!</h5>
+        <NewReviewForm postNewReview={postReview} />
       </div>
       <div className="reviews">
         <h4>Reviews</h4>
