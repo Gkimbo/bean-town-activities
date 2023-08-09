@@ -86,6 +86,8 @@ const ActivityShow = (props) => {
             postReview={postReview}
             activityName={activity.name}
             reviews={activity.reviews}
+            activityId={activityId}
+            user={props.user}
           />
         </div>
       </div>

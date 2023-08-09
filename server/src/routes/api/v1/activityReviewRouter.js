@@ -3,9 +3,7 @@ import { Activity, Review, User, Rating } from "../../../models/index.js"
 import { ValidationError } from "objection"
 import cleanUserInput from "../../../services/cleanUserInput.js"
 
-
 const activityReviewRouter = new express.Router({ mergeParams: true })
-
 
 activityReviewRouter.post("/", async (req, res) => {
     const userId = req.user.id
@@ -25,36 +23,32 @@ activityReviewRouter.post("/", async (req, res) => {
     }
 })
 
-
 activityReviewRouter.post("/rating", async (req, res) => {
-    console.log(req.body)
+    const { reviewId, rating } = req.body
+    const userId = req.user.id
     try {
-        const newRating = await Rating.query().insert()
-    } catch(err){
-
+        const newRating = await Rating.query().insert({ reviewId, userId, rating })
+        return res.status(201).json(newRating)
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({ errors: error })
     }
 })
 
-
 activityReviewRouter.get("/", async (req, res) => {
-
     const userId = req.user.id
     const activityId = req.params.id
 
     try {
         const activity = await Activity.query().findById(activityId)
-        const allReviews = await activity.$relatedQuery("reviews").where('userId', userId)
+        const allReviews = await activity.$relatedQuery("reviews").where("userId", userId)
         return res.status(200).json({ reviews: allReviews })
-
     } catch (error) {
         return res.status(500).json({ errors: error })
     }
 })
 
-
-
 activityReviewRouter.delete("/:id", async (req, res) => {
-
     try {
         const reviewToDelete = await Review.query().findById(req.params.id)
         if (reviewToDelete.userId === req.user.id) {

@@ -2,30 +2,56 @@ import React, { useState } from "react";
 import ErrorList from "./registration/components/layout/ErrorList";
 import NewReviewForm from "./NewReviewForm";
 
-const ReviewsShowPage = ({ activityName, reviews, postReview, errors }) => {
-
+const ReviewsShowPage = ({ activityName, reviews, postReview, errors, activityId, user }) => {
   const [rating, setRating] = useState({
-    reviewId: "",
-    rating: ""
-  })
+}); 
+  console.log(rating);
 
-  const handleRatingDown = (event) => {
-    event.preventDefault()
-    
-    console.log(event.currentTarget)
-  }
-  const handleRatingUp = (event) => {
-    event.preventDefault()
-    console.log(event.currentTarget)
-  }
+  const postRating = async (ratingObject) => {
+    try {
+      const response = await fetch(`/api/v1/activities/${activityId}/reviews/rating`, {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(ratingObject)
+      });
+
+      if (!response.ok) { 
+        const error = new Error(`${response.status} (${response.statusText})`);
+        throw error;
+      }
+
+      const responseData = await response.json();
+      console.log(responseData)
+      setRating(responseData);
+    } catch (error) {
+      console.error('Error in fetch!', error.message);
+    }
+  };
+
+  const handleRating = ({ reviewId, selectedRating }) => {
+    postRating({ reviewId, rating: selectedRating });
+  };
 
   const listOfReviews = reviews.map((review) => {
+    console.log(`Review ID: ${review.id}, User Rating: ${rating.rating}`);
     return (
-    <li key={review.id}>
-      {review.content} 
-      <div onClick={handleRatingDown} value={review.id}>Downvote</div>
-      <div onClick={handleRatingUp} value={review.id}>Upvote</div>
-    </li>
+      <li key={review.id}>
+        {review.content}
+        {review.id !== rating.reviewId && rating.rating == 2 ? (
+          <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 1 })}><i>Upvote</i></div>
+        ) : null}
+        {review.id !== rating.reviewId && rating.rating == 1? (
+          <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 2 })}><i>Downvote</i></div>
+        ) : null}
+        {rating.rating === undefined ? (
+          <>
+            <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 2 })}><i>Downvote</i></div>
+            <div onClick={() => handleRating({ reviewId: review.id, selectedRating: 1 })}><i>Upvote</i></div>
+          </>
+        ) : null}
+      </li>
     );
   });
 
@@ -34,27 +60,6 @@ const ReviewsShowPage = ({ activityName, reviews, postReview, errors }) => {
     reviewContent = <p>No reviews yet!</p>
   } else {
     reviewContent = <ul>{listOfReviews}</ul>
-  }
-
-  const postRating = async (ratingObject) => {
-    try {
-      const response = await fetch(`/api/v1/activities/${activityId}/reviews/rating`, {
-        method: "POST",
-        headers: new Headers({
-          "Content-Type": "application/json"
-        }),
-        body: JSON.stringify(ratingObject)
-      })
-      if(!response){
-        const error = new Error(`${response.status} (${response.statusText})`)
-        throw error
-      }
-      const responseData = await response.json()
-
-      //set state
-    } catch (error) {
-      console.error("Error in fetch!", error.message)
-    }
   }
 
   return (
