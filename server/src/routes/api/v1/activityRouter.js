@@ -9,7 +9,6 @@ activityRouter.use("/:id/reviews", activityReviewRouter)
 
 activityRouter.get("/:id", async (req, res) => {
     const activityId = req.params.id
-
     try {
         const activity = await Activity.query().findById(activityId)
         const serializedActivity = await ActivitySerializer.getSummaryOfOne(activity)

@@ -32,17 +32,19 @@ const HomePage = (props) => {
   });
 
   return (
-    <div className="text-center">
-      <h2 className="text-center">Explore</h2>
-      <div className="categories-list align-center">{listOfCategories}</div>
-      <div className=" activity-container grid-x">
-        <ul className="text-center activity-tile no-dot-list">
-          <li>Welcome to Bean town reviews HomePage!</li>
-          <li>
-            Your one stop shop to see all of the reviews for your favorite places in Downtown
-            boston!
-          </li>
-        </ul>
+    <div className="grid-x align-center-middle text-center">
+      <div className="cell small-6 align-center">
+        <h2 className="text-center title-text">Categories</h2>
+        <div className="categories-list align-center">{listOfCategories}</div>
+        <div className=" activity-container grid-x">
+          <ul className="text-center activity-tile no-dot-list">
+            <li>Welcome to Bean town reviews HomePage!</li>
+            <li>
+              Your one stop shop to see all of the reviews for your favorite places in Downtown
+              boston!
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
