@@ -78,6 +78,7 @@ const ActivityShow = (props) => {
           </ul>
         </div>
       </div>
+
       <div className="cell small-12 medium-6">
         <div className="activity-container">
           <ReviewsShowPage
