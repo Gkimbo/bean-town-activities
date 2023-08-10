@@ -91,7 +91,7 @@ const ReviewsEditor = (props) => {
   {
     return (
       <div className="reviews-edit activity-container">
-        <h1>Edit/Delete your reviews!</h1>
+        <h1>Edit or Delete your reviews for this Activity!</h1>
         <ul>{listOfReviews}</ul>
         <div className="edit-form">
           {editForm && <EditReviewForm
