@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import ReviewsShowPage from "./ReviewsShowPage";
+import ReviewsList from "./ReviewsList";
 import translateServerErrors from "../services/translateServerErrors";
 
 const ActivityShow = (props) => {
@@ -22,6 +22,7 @@ const ActivityShow = (props) => {
         throw error;
       }
       const body = await response.json();
+      console.log(body)
       setActivity(body.activity);
     } catch (error) {
       console.error(`Error in fetch: ${err.message}`);
@@ -81,13 +82,11 @@ const ActivityShow = (props) => {
 
       <div className="cell small-12 medium-6">
         <div className="activity-container">
-          <ReviewsShowPage
+          <ReviewsList
             errors={errors}
             postReview={postReview}
             activityName={activity.name}
             reviews={activity.reviews}
-            activityId={activityId}
-            user={props.user}
           />
         </div>
       </div>

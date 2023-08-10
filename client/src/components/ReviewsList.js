@@ -3,13 +3,15 @@ import ErrorList from "./registration/components/layout/ErrorList";
 import NewReviewForm from "./NewReviewForm";
 import RatingTile from "./RatingTile";
 
-const ReviewsShowPage = ({ activityName, reviews, postReview, errors, activityId, user }) => {
+const ReviewsList = ({ activityName, reviews, postReview, errors }) => {
   const listOfReviews = reviews.map((review) => (
     <RatingTile
       key={review.id}
       id={review.id}
       content={review.content}
-      activityId={activityId}
+      downVote={review.downVote}
+      upVote={review.upVote}
+      totalRating={review.totalRating}
     />
   ));
 
@@ -35,4 +37,4 @@ const ReviewsShowPage = ({ activityName, reviews, postReview, errors, activityId
   );
 };
 
-export default ReviewsShowPage;
+export default ReviewsList;

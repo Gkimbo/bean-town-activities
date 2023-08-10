@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-const RatingTile = ({ id, content, activityId }) => {
+const RatingTile = ({ id, content, downVote, upVote, totalRating }) => {
   const [ratings, setRatings] = useState({});
-  const [allRatings, setAllRatings] = useState([]);
 
   const postRating = async (reviewId, selectedRating) => {
     try {
-      const response = await fetch(`/api/v1/activities/${activityId}/reviews/rating`, {
+      const response = await fetch(`/api/v1/ratings`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -17,34 +16,7 @@ const RatingTile = ({ id, content, activityId }) => {
         throw new Error(`${response.status} (${response.statusText})`);
       }
       const responseData = await response.json();
-      setRatings(responseData);
-    } catch (error) {
-      console.error("Error in fetch!", error.message);
-    }
-  };
-
-  let upVotes = 0;
-  let downVotes = 0;
-
-  allRatings.forEach((ratingObject) => {
-    if (id === ratingObject.reviewId && ratingObject.rating === 2) {
-      upVotes++;
-    }
-    if (id === ratingObject.reviewId && ratingObject.rating === 1) {
-      downVotes++;
-    }
-  });
-  const totalVotes = upVotes - downVotes;
-
-  const getRatings = async () => {
-    try {
-      const response = await fetch(`/api/v1/activities/${activityId}/reviews/rating`);
-      if (!response.ok) {
-        const error = new Error(`${response.status} (${response.statusText})`);
-        throw error;
-      }
-      const responseData = await response.json();
-      setAllRatings(responseData.allRatings);
+      setRatings(responseData.newRating)
     } catch (error) {
       console.error("Error in fetch!", error.message);
     }
@@ -52,17 +24,16 @@ const RatingTile = ({ id, content, activityId }) => {
 
   const handleRating = ({ reviewId, selectedRating }) => {
     postRating(reviewId, selectedRating);
-    getRatings();
   };
 
-  if (ratings.newRating) {
+  if (ratings.error) {
     return (
       <li>
         {content}
-        <div className="voting-div thumbs-down">{ratings.newRating}</div>
-        <div className="thumbs-up">{`Likes: ${upVotes}`}</div>
-        <div className="thumbs-down">{`Dislikes: ${downVotes}`}</div>
-        <div className="">{`Total: ${totalVotes}`}</div>
+        <div className="voting-div thumbs-down">{ratings.error}</div>
+        <div className="thumbs-up">{`Likes: ${upVote}`}</div>
+        <div className="thumbs-down">{`Dislikes: ${downVote}`}</div>
+        <div className="">{`Rating: ${totalRating}`}</div>
       </li>
     );
   } else if (!ratings.userId) {
@@ -87,9 +58,9 @@ const RatingTile = ({ id, content, activityId }) => {
     return (
       <li>
         {content}
-        <div className="voting-div thumbs-up">{`Likes: ${upVotes}`}</div>
-        <div className="voting-div thumbs-down">{`Dislikes: ${downVotes}`}</div>
-        <div className="voting-div">{`Rating: ${totalVotes}`}</div>
+        <div className="thumbs-up">{`Likes: ${upVote}`}</div>
+        <div className="thumbs-down">{`Dislikes: ${downVote}`}</div>
+        <div className="">{`Rating: ${totalRating}`}</div>
       </li>
     );
   }
