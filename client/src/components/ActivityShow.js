@@ -61,13 +61,7 @@ const ActivityShow = (props) => {
     getActivity();
   }, []);
 
-  let setButton;
-  activity.reviews.forEach((review) => {
-    if (props.user.id == review.userId) {
-      setButton = true
-    } else setButton = false
-    return setButton
-  })
+  const review = activity.reviews.find(review =>  props.user.id === review.userId )
 
   return (
     <div className="grid-x ">
@@ -99,7 +93,7 @@ const ActivityShow = (props) => {
       </div>
 
       <div className="cell small-12">
-        {setButton && <Link className="btn-hover color-1" to={`/reviews/${activityId}`}>
+        {review && <Link className="btn-hover color-1" to={`/reviews/${activityId}`}>
           Edit/Delete Review
         </Link>}
       </div>

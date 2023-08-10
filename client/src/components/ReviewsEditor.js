@@ -5,7 +5,7 @@ import EditReviewForm from "./EditReviewForm";
 const ReviewsEditor = (props) => {
   const [reviewsToEdit, setReviewsToEdit] = useState([]);
   const [editForm, setEditForm] = useState(false)
-  const [review ,  setReview] = useState([])
+  const [review, setReview] = useState([])
 
   const getReviews = async () => {
     try {
@@ -57,8 +57,8 @@ const ReviewsEditor = (props) => {
       }
       const responseData = await response.json();
       const addEditedReview = reviewsToEdit.map((review) => {
-        if(review.id === id){
-           review.content = responseData.review.content
+        if (review.id === id) {
+          review.content = responseData.review.content
         }
         return review
       })
@@ -73,6 +73,7 @@ const ReviewsEditor = (props) => {
   }, []);
 
   const handleDelete = (id) => {
+    setEditForm(false)
     removeReview(id);
   };
 
@@ -88,22 +89,18 @@ const ReviewsEditor = (props) => {
     )
   });
 
-  {
-    return (
-      <div className="reviews-edit activity-container">
-        <h1>Edit or Delete your reviews for this Activity!</h1>
-        <ul>{listOfReviews}</ul>
-        <div className="edit-form">
-          {editForm && <EditReviewForm
-            review={review}
-            changeReview={changeReview} />}
-        </div>
+  return (
+    <div className="reviews-edit activity-container">
+      <h1>Edit or Delete your reviews for this Activity!</h1>
+      <ul>{listOfReviews}</ul>
+      <div className="edit-form">
+        {editForm && <EditReviewForm
+          review={review}
+          changeReview={changeReview}
+        />}
       </div>
-    );
-  }
-
-
-
+    </div>
+  );
 };
 
 export default ReviewsEditor;
