@@ -9,7 +9,7 @@ const ActivityShow = (props) => {
     name: "",
     location: "",
     description: "",
-    reviews: [],
+    reviews: []
   });
 
   const activityId = props.computedMatch.params.id;
@@ -58,6 +58,25 @@ const ActivityShow = (props) => {
     }
   };
 
+  const postRating = async (reviewId, selectedRating) => {
+    try {
+      const response = await fetch(`/api/v1/ratings`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ reviewId, rating: selectedRating }),
+      });
+      if (!response.ok) {
+        throw new Error(`${response.status} (${response.statusText})`);
+      }
+      const responseData = await response.json();
+      // take the updated review and add to state
+    } catch (error) {
+      console.error("Error in fetch!", error.message);
+    }
+  };
+
   useEffect(() => {
     getActivity();
   }, []);
@@ -87,6 +106,7 @@ const ActivityShow = (props) => {
             postReview={postReview}
             activityName={activity.name}
             reviews={activity.reviews}
+            postRating={postRating}
           />
         </div>
       </div>

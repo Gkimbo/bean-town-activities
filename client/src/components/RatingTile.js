@@ -1,42 +1,20 @@
-import React, { useState } from "react";
+import React from "react";
 
-const RatingTile = ({ id, content, downVote, upVote, totalRating }) => {
-  const [ratings, setRatings] = useState({});
-
-  const postRating = async (reviewId, selectedRating) => {
-    try {
-      const response = await fetch(`/api/v1/ratings`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ reviewId, rating: selectedRating }),
-      });
-      if (!response.ok) {
-        throw new Error(`${response.status} (${response.statusText})`);
-      }
-      const responseData = await response.json();
-      setRatings(responseData.newRating)
-    } catch (error) {
-      console.error("Error in fetch!", error.message);
-    }
-  };
-
+const RatingTile = ({ id, content, downVote, upVote, totalRating, postRating, voted }) => {
   const handleRating = ({ reviewId, selectedRating }) => {
     postRating(reviewId, selectedRating);
   };
 
-  if (ratings.error) {
+  if (voted === true) {
     return (
       <li>
         {content}
-        <div className="voting-div thumbs-down">{ratings.error}</div>
-        <div className="thumbs-up">{`Likes: ${upVote}`}</div>
-        <div className="thumbs-down">{`Dislikes: ${downVote}`}</div>
-        <div className="">{`Rating: ${totalRating}`}</div>
+        <div className="voting-div thumbs-up">{`Likes: ${upVote}`}</div>
+        <div className="voting-div thumbs-down">{`Dislikes: ${downVote}`}</div>
+        <div className="voting-div">{`Rating: ${totalRating}`}</div>
       </li>
     );
-  } else if (!ratings.userId) {
+  } else if (!voted) {
     return (
       <li>
         {content}
@@ -54,16 +32,8 @@ const RatingTile = ({ id, content, downVote, upVote, totalRating }) => {
         </div>
       </li>
     );
-  } else {
-    return (
-      <li>
-        {content}
-        <div className="thumbs-up">{`Likes: ${upVote}`}</div>
-        <div className="thumbs-down">{`Dislikes: ${downVote}`}</div>
-        <div className="">{`Rating: ${totalRating}`}</div>
-      </li>
-    );
-  }
+  } 
+
 };
 
 export default RatingTile;

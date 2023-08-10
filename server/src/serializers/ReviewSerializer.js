@@ -8,7 +8,6 @@ class ReviewSerializer {
                 const finalReview = {}
                 let upVote = 0
                 let downVote = 0
-
                 for (const attribute of acceptedAttributes) {
                     finalReview[attribute] = review[attribute]
                 }
@@ -24,7 +23,9 @@ class ReviewSerializer {
                     }
 
                     if (voteObject.userId === user.id) {
-                        finalReview.vote = voteObject
+                        finalReview.voted = true
+                    } else {
+                        finalReview.voted = false
                     }
                 })
                 finalReview.upVote = upVote

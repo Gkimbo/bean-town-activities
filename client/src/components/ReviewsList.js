@@ -3,7 +3,7 @@ import ErrorList from "./registration/components/layout/ErrorList";
 import NewReviewForm from "./NewReviewForm";
 import RatingTile from "./RatingTile";
 
-const ReviewsList = ({ activityName, reviews, postReview, errors }) => {
+const ReviewsList = ({ activityName, reviews, postReview, errors, postRating }) => {
   const listOfReviews = reviews.map((review) => (
     <RatingTile
       key={review.id}
@@ -12,6 +12,8 @@ const ReviewsList = ({ activityName, reviews, postReview, errors }) => {
       downVote={review.downVote}
       upVote={review.upVote}
       totalRating={review.totalRating}
+      postRating={postRating}
+      voted={review.voted}
     />
   ));
 

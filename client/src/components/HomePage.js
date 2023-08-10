@@ -25,7 +25,7 @@ const HomePage = (props) => {
 
   const listOfCategories = categories.map((category) => {
     return (
-      <li className="btn-1">
+      <li className="btn-1" key={category.id}>
         <Link to={`/categories/${category.id}`}>{category.name}</Link>
       </li>
     );
