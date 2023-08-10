@@ -4,22 +4,20 @@ import NewReviewForm from "./NewReviewForm";
 import RatingTile from "./RatingTile";
 
 const ReviewsShowPage = ({ activityName, reviews, postReview, errors, activityId, user }) => {
-
   const listOfReviews = reviews.map((review) => (
-    <RatingTile 
-    key={review.id} 
-    id={review.id} 
-    user={user} 
-    content={review.content}
-    activityId={activityId}
+    <RatingTile
+      key={review.id}
+      id={review.id}
+      content={review.content}
+      activityId={activityId}
     />
   ));
 
   let reviewContent;
-  if (listOfReviews.length === 0){
-    reviewContent = <p>No reviews yet!</p>
-  } else{
-    reviewContent = <ul>{listOfReviews}</ul>
+  if (listOfReviews.length === 0) {
+    reviewContent = <p>No reviews yet!</p>;
+  } else {
+    reviewContent = <ul>{listOfReviews}</ul>;
   }
 
   return (

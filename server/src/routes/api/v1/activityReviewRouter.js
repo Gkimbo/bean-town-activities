@@ -26,9 +26,9 @@ activityReviewRouter.post("/", async (req, res) => {
 activityReviewRouter.get("/rating", async (req, res) => {
     try {
         const allRatings = await Rating.query()
-        return res.status(200).json({allRatings})
+        return res.status(200).json({ allRatings })
     } catch (error) {
-        return res.status(500).json({errors: error})
+        return res.status(500).json({ errors: error })
     }
 })
 
@@ -36,17 +36,14 @@ activityReviewRouter.post("/rating", async (req, res) => {
     const { reviewId, rating } = req.body
     const userId = req.user.id
     try {
-        const currentVote = await Rating.query().findOne({reviewId, userId})
-        console.log(currentVote)
-        if(!currentVote){
+        const currentVote = await Rating.query().findOne({ reviewId, userId })
+        if (!currentVote) {
             const newRating = await Rating.query().insert({ reviewId, userId, rating })
             return res.status(201).json(newRating)
         }
-        const response = {}
-        return res.status(200).json({newRating: response})
-        
+        const response = { error: "You have already voted on this review!" }
+        return res.status(200).json({ newRating: response.error })
     } catch (error) {
-        console.log(error)
         return res.status(500).json({ errors: error })
     }
 })
