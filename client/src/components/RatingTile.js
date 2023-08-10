@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 const RatingTile = ({ id, content, user, activityId }) => {
   const [ratings, setRatings] = useState({});
+  const [allRatings, setAllRatings] = useState([])
+  console.log(allRatings)
 
   const postRating = async (reviewId, selectedRating) => {
     try {
@@ -16,15 +18,45 @@ const RatingTile = ({ id, content, user, activityId }) => {
         throw new Error(`${response.status} (${response.statusText})`);
       }
       const responseData = await response.json();
-    
       setRatings(responseData);
     } catch (error) {
       console.error("Error in fetch!", error.message);
     }
   };
 
+  let upVotes = 0;
+  let downVotes = 0;
+  
+
+  allRatings.forEach((ratingObject) => {
+    if(id === ratingObject.reviewId && ratingObject.rating === 2){
+      upVotes++
+      
+    }
+    if(id === ratingObject.reviewId && ratingObject.rating === 1){
+      downVotes++
+      
+    }
+  })
+  const totalVotes = (upVotes - downVotes);
+
+  const getRatings = async () => {
+    try {
+      const response = await fetch(`/api/v1/activities/${activityId}/reviews/rating`)
+      if(!response.ok){
+        const error = new Error(`${response.status} (${response.statusText})`)
+        throw error
+      }
+      const responseData = await response.json()
+      setAllRatings(responseData.allRatings)
+    } catch (error) {
+      console.error("Error in fetch!", error.message)
+    }
+  }
+
   const handleRating = ({ reviewId, selectedRating }) => {
     postRating(reviewId, selectedRating);
+    getRatings()
   };
 
   if(!ratings.userId){
@@ -52,6 +84,9 @@ const RatingTile = ({ id, content, user, activityId }) => {
     return (
       <li>
         {content}
+        <div className="voting-div thumbs-up">{`Likes: ${upVotes}`}</div>
+        <div className="voting-div thumbs-down">{`Dislikes: ${downVotes}`}</div>
+        <div className="voting-div">{`Total: ${totalVotes}`}</div>
       </li>
     );
   }
