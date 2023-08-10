@@ -58,4 +58,22 @@ activityReviewRouter.delete("/:id", async (req, res) => {
     }
 })
 
+
+activityReviewRouter.patch("/:id", async (req,res) =>{
+    const reviewId = req.params.id
+    const editedReview = cleanUserInput(req.body)
+
+    try {
+        await Review.query().findById(reviewId).patch({ content : editedReview.content })
+        const review = await Review.query().findById(reviewId)
+        return res.status(201).json({ review })
+    } catch (error) {
+        if (error instanceof ValidationError) {
+            return res.status(422).json({ errors: error.data })
+        }
+        return res.status(500).json({ errors: error })
+    }
+
+})
+
 export default activityReviewRouter
