@@ -461,3 +461,16 @@ input[type=submit] {
   -webkit-border-radius: 5px;
   border-radius: 5px;
 }
+
+.voting-div{
+  display:inline-block;
+  margin: 0 6px;
+}
+
+.fa-thumbs-down{
+  color:#a90909;
+}
+
+.fa-thumbs-up{
+  color:#01991a;
+}

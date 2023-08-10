@@ -41,7 +41,7 @@ const EditReviews = (props) => {
 
   const listOfReviews = reviewsToEdit.map((review) => {
     return (
-      <EditReviewTile review={review} handleDelete={handleDelete} />
+      <EditReviewTile key={review.id} review={review} handleDelete={handleDelete} />
     )
   });
 
