@@ -61,6 +61,8 @@ const ActivityShow = (props) => {
     getActivity();
   }, []);
 
+  const review = activity.reviews.find(review =>  props.user.id === review.userId )
+
   return (
     <div className="grid-x ">
       <div className="activity-show cell small-12 medium-6">
@@ -89,10 +91,11 @@ const ActivityShow = (props) => {
           />
         </div>
       </div>
+
       <div className="cell small-12">
-        <Link className="btn-hover color-1" to={`/reviews/${activityId}`}>
-          Delete Review!
-        </Link>
+        {review && <Link className="btn-hover color-1" to={`/reviews/${activityId}`}>
+          Edit/Delete Review
+        </Link>}
       </div>
     </div>
   );
