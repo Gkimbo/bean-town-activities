@@ -5,12 +5,10 @@ import cleanUserInput from "../../../services/cleanUserInput.js"
 
 const activityReviewRouter = new express.Router({ mergeParams: true })
 
-
 activityReviewRouter.post("/", async (req, res) => {
     const userId = req.user.id
     const newReview = cleanUserInput(req.body)
     const { content } = newReview
-
     const activityId = req.params.id
 
     try {
@@ -24,9 +22,7 @@ activityReviewRouter.post("/", async (req, res) => {
     }
 })
 
-
 activityReviewRouter.get("/", async (req, res) => {
-
     const userId = req.user.id
     const activityId = req.params.id
 
@@ -38,7 +34,6 @@ activityReviewRouter.get("/", async (req, res) => {
         return res.status(500).json({ errors: error })
     }
 })
-
 
 activityReviewRouter.delete("/:id", async (req, res) => {
 
@@ -57,7 +52,6 @@ activityReviewRouter.delete("/:id", async (req, res) => {
         return res.status(500).json({ errors: err })
     }
 })
-
 
 activityReviewRouter.patch("/:id", async (req,res) =>{
     const reviewId = req.params.id
