@@ -89,7 +89,7 @@ const RatingTile = ({ id, content, activityId }) => {
         {content}
         <div className="voting-div thumbs-up">{`Likes: ${upVotes}`}</div>
         <div className="voting-div thumbs-down">{`Dislikes: ${downVotes}`}</div>
-        <div className="voting-div">{`Total: ${totalVotes}`}</div>
+        <div className="voting-div">{`Rating: ${totalVotes}`}</div>
       </li>
     );
   }
