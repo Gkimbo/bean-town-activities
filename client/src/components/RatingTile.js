@@ -60,6 +60,9 @@ const RatingTile = ({ id, content, activityId }) => {
       <li>
         {content}
         <div className="voting-div thumbs-down">{ratings.newRating}</div>
+        <div className="thumbs-up">{`Likes: ${upVotes}`}</div>
+        <div className="thumbs-down">{`Dislikes: ${downVotes}`}</div>
+        <div className="">{`Total: ${totalVotes}`}</div>
       </li>
     );
   } else if (!ratings.userId) {
