@@ -58,8 +58,7 @@ activityReviewRouter.patch("/:id", async (req,res) =>{
     const editedReview = cleanUserInput(req.body)
 
     try {
-        await Review.query().findById(reviewId).patch({ content : editedReview.content })
-        const review = await Review.query().findById(reviewId)
+        const review = await Review.query().patchAndFetchById(reviewId,{ content : editedReview.content })
         return res.status(201).json({ review })
     } catch (error) {
         if (error instanceof ValidationError) {

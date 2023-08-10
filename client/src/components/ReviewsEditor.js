@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import EditReviewTile from "./EditReviewTile";
 import EditReviewForm from "./EditReviewForm";
 
-const EditReviews = (props) => {
+const ReviewsEditor = (props) => {
   const [reviewsToEdit, setReviewsToEdit] = useState([]);
   const [editForm, setEditForm] = useState(false)
   const [review ,  setReview] = useState([])
@@ -65,7 +65,6 @@ const EditReviews = (props) => {
       setReviewsToEdit(addEditedReview);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
-
     }
   }
 
@@ -79,8 +78,8 @@ const EditReviews = (props) => {
 
   const handleEdit = (id) => {
     setEditForm(true)
-    const review = reviewsToEdit.filter((review) => review.id === id)
-    setReview(review[0])
+    const review = reviewsToEdit.find((review) => review.id === id)
+    setReview(review)
   }
 
   const listOfReviews = reviewsToEdit.map((review) => {
@@ -107,4 +106,4 @@ const EditReviews = (props) => {
 
 };
 
-export default EditReviews;
+export default ReviewsEditor;
