@@ -25,7 +25,6 @@ activityReviewRouter.post("/", async (req, res) => {
 activityReviewRouter.get("/", async (req, res) => {
     const userId = req.user.id
     const activityId = req.params.id
-
     try {
         const activity = await Activity.query().findById(activityId)
         const allReviews = await activity.$relatedQuery("reviews").where("userId", userId)
@@ -55,7 +54,6 @@ activityReviewRouter.delete("/:id", async (req, res) => {
 activityReviewRouter.patch("/:id", async (req,res) =>{
     const reviewId = req.params.id
     const editedReview = cleanUserInput(req.body)
-
     try {
         const review = await Review.query().patchAndFetchById(reviewId,{ content : editedReview.content })
         return res.status(201).json({ review })
