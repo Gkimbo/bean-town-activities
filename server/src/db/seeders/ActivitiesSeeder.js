@@ -28,47 +28,56 @@ class ActivitiesSeeder {
             {
                 name: "Alley Bar",
                 description: "Expensive drinks but great Karaoke",
+                location: "14 PI Alley, Boston, MA 02108",
                 categoryId: drinks.id
             },
             {
-                name: "Roxanne's cocktail bar",
+                name: "Roxanne's Cocktail Bar",
                 description: "Great cocktails, better times",
+                location: '6 Beacon St, Boston, MA 02108',
                 categoryId: drinks.id
             },
             { name: "Back Deck", description: "Burgers outside", categoryId: food.id },
             {
                 name: "Gene's Chinese Flatbread Cafe",
                 description: "Cheap Chinese food you cant live without",
+                location: "86 Bedford St, Boston, MA 02111",
                 categoryId: food.id
             },
             {
                 name: "Falafel King",
                 description: "Falafel's not much more to say",
+                location: "62 Summer St, Boston, MA 02110",
                 categoryId: food.id
             },
             {
                 name: "Roche Bros",
                 description: "The one stop shop for food",
+                location: "8 Summer St, Boston MA 02110",
                 categoryId: shopping.id
             },
             {
                 name: "T.J.Maxx",
                 description: "Cheap everything, from clothes to appliances",
+                location: "350 Washington St, Boston, MA 02109",
                 categoryId: shopping.id
             },
             {
                 name: "The Corner Mall",
                 description: "Its a mall, not much more to add",
+                location: "417 Washington St, Boston, MA 02129",
                 categoryId: shopping.id
             },
             {
                 name: "GNC",
                 description: "Steroids without the hassle",
+                location: "545 Boylston St, Boston, MA 02116",
                 categoryId: shopping.id
             },
             {
                 name: "Marshalls",
                 description: "The same as T.J.Maxx but a different name",
+                location: "350 Washington St, Boston, MA 02108",
                 categoryId: shopping.id
             }
         ]
