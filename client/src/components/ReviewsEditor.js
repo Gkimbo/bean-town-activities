@@ -85,13 +85,13 @@ const ReviewsEditor = (props) => {
 
   const listOfReviews = reviewsToEdit.map((review) => {
     return (
-      <EditReviewTile review={review} handleDelete={handleDelete} handleEdit={handleEdit} />
+      <EditReviewTile key={review.id} review={review} handleDelete={handleDelete} handleEdit={handleEdit} />
     )
   });
 
   return (
     <div className="reviews-edit activity-container">
-      <h1>Edit or Delete your reviews for this Activity!</h1>
+      <h1 className="cell small-12">Edit your reviews!</h1>
       <ul>{listOfReviews}</ul>
       <div className="edit-form">
         {editForm && <EditReviewForm
