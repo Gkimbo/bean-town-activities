@@ -14,17 +14,7 @@ class Review extends Model {
             }
         }
     }
-
-    get votedStatus(){
-        let voted
-        if (this.userId === user.id) {
-            voted = true
-        } else {
-            voted = false
-        } 
-        return voted
-    }
-
+    
     static get relationMappings() {
         const { User, Activity, Rating } = require("./index.js")
 

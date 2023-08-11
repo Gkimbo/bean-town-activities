@@ -11,7 +11,7 @@ const ActivityShow = (props) => {
     description: "",
     reviews: []
   });
-
+  
   const activityId = props.computedMatch.params.id;
   const getActivity = async () => {
     try {
@@ -22,10 +22,9 @@ const ActivityShow = (props) => {
         throw error;
       }
       const body = await response.json();
-      console.log(body)
       setActivity(body.activity);
     } catch (error) {
-      console.error(`Error in fetch: ${err.message}`);
+      console.error(`Error in fetch: ${error.message}`);
     }
   };
 
@@ -51,7 +50,7 @@ const ActivityShow = (props) => {
       } else {
         const reviewData = await response.json();
         setErrors([]);
-        setActivity({ ...activity, reviews: [...activity.reviews, reviewData.review] });
+        setActivity({ ...activity, reviews: [...activity.reviews, reviewData.review]});
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
@@ -71,7 +70,14 @@ const ActivityShow = (props) => {
         throw new Error(`${response.status} (${response.statusText})`);
       }
       const responseData = await response.json();
-      // take the updated review and add to state
+      const reviewIndex = activity.reviews.findIndex(review => review.id === responseData.review.id);
+      if (reviewIndex !== -1) {
+        const updatedReviews = [...activity.reviews];
+        updatedReviews[reviewIndex] = responseData.review;
+        setActivity({ ...activity, reviews: updatedReviews });
+      } else {
+        setActivity({ ...activity, reviews: [...activity.reviews, responseData.review] });
+      }
     } catch (error) {
       console.error("Error in fetch!", error.message);
     }

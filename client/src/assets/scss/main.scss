@@ -189,16 +189,24 @@ body {
   box-shadow: 0 4px 15px 0 rgba(0, 78, 9, 0.75);
 }
 
+.edit-page-title{
+  border: 2px solid black;
+}
+
 .button-delete {
   appearance: none;
+  display:inline-block;
   background: transparent;
-  border: 0;
+  // border: 3px solid black;
   color: #fff;
   cursor: pointer;
   font: inherit;
+  width: 5rem;
+  height: 2rem;
   font-weight: 500;
-  line-height: 1;
-  padding: 1em 1.5em;
+  line-height: 1.5;
+  // padding:0.25rem;
+  // margin-left:1.5rem;
   position: relative;
   transition: filter var(--motion-duration);
 }
@@ -379,6 +387,10 @@ body {
   margin: 0 auto;
   width: 50%;
   background-color: #abd1c6;
+}
+
+.text-box-1{
+  background-color: #00577f;
 }
 
 .make-transparent{

@@ -29,6 +29,7 @@ const EditReviewForm = ({ changeReview , review }) => {
             <form onSubmit={handleSubmit}>
                 <label>
                     <input
+                        className="text-box-1"
                         type="text"
                         name="content"
                         onChange={handleInputChange}

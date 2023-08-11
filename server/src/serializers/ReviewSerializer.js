@@ -11,7 +11,6 @@ class ReviewSerializer {
                 for (const attribute of acceptedAttributes) {
                     finalReview[attribute] = review[attribute]
                 }
-
                 const votes = await review.$relatedQuery("ratings")
                 const serializedVotes = RatingSerializer.getSummaryOfArray(votes)
                 serializedVotes.forEach((voteObject) => {
@@ -35,6 +34,37 @@ class ReviewSerializer {
             })
         )
         return serializedActivity
+    }
+
+    static async getSummaryOfOne(review, user){
+        const acceptedAttributes = ["id", "content", "userId", "activityId"]
+
+        const serializedReview = {}
+        for(const attribute of acceptedAttributes){
+            serializedReview[attribute] = review[attribute]
+        }
+
+        let upVote = 0
+        let downVote = 0
+        let voted = false
+        const votes = await review.$relatedQuery("ratings")
+        const serializedVotes = RatingSerializer.getSummaryOfArray(votes)
+        serializedVotes.forEach((voteObject) => {
+            if (voteObject.rating == 2) {
+                upVote++
+            }
+            if (voteObject.rating == 1) {
+                downVote++
+            }
+            if (voteObject.userId === user.id) {
+                voted = true
+            }
+        })
+        serializedReview.upVote = upVote
+        serializedReview.downVote = downVote
+        serializedReview.totalRating = upVote - downVote
+        serializedReview.voted = voted
+        return serializedReview
     }
 }
 
