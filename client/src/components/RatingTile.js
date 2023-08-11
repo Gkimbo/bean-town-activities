@@ -32,8 +32,7 @@ const RatingTile = ({ id, content, downVote, upVote, totalRating, postRating, vo
         </div>
       </li>
     );
-  } 
-
+  }
 };
 
 export default RatingTile;

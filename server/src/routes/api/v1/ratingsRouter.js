@@ -9,7 +9,7 @@ ratingsRouter.post("/", async (req, res) => {
     const { reviewId, rating } = req.body
     const userId = req.user.id
     try {
-        const newRating = await Rating.query().insert({ reviewId, userId, rating })
+        await Rating.query().insert({ reviewId, userId, rating })
         const review = await Review.query().findById(reviewId)
         const serializedReview = await ReviewSerializer.getSummaryOfOne(review, req.user)
         return res.status(201).json({review: serializedReview })

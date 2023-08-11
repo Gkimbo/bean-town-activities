@@ -38,18 +38,14 @@ activityReviewRouter.get("/", async (req, res) => {
 activityReviewRouter.delete("/:id", async (req, res) => {
     try {
         const reviewToDelete = await Review.query().findById(req.params.id)
-        const ratingsToDelete = await Rating.query().where('reviewId', reviewToDelete.id);
         if (reviewToDelete.userId === req.user.id) {
-            for(const rating of ratingsToDelete){
-                await rating.$query().delete()
-            }
+            await reviewToDelete.$relatedQuery("ratings").delete()
             await reviewToDelete.$query().delete()
         } else {
             const errorMessage = `You are not authorized to delete this review.`
             const error = new Error(errorMessage)
             throw error
         }
-
         return res.status(200).json({ review: reviewToDelete })
     } catch (err) {
         return res.status(500).json({ errors: err })

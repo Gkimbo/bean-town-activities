@@ -90,8 +90,8 @@ const ActivityShow = (props) => {
   const review = activity.reviews.find(review =>  props.user.id === review.userId )
 
   return (
-    <div className="grid-x ">
-      <div className="activity-show cell small-12 medium-6">
+    <div className="grid-x grid-padding-x grid-padding-y">
+      <div className="activity-show cell small-12 medium-5 medium-offset-1">
         <div className="activity-show-container">
           <h3 className="activity-title">{activity.name}</h3>
           <ul className="no-dot-list">
@@ -107,8 +107,8 @@ const ActivityShow = (props) => {
         </div>
       </div>
 
-      <div className="cell small-12 medium-6">
-        <div className="activity-container">
+      <div className="cell small-12 medium-5">
+        <div className="activity-show-container">
           <ReviewsList
             errors={errors}
             postReview={postReview}
@@ -119,8 +119,8 @@ const ActivityShow = (props) => {
         </div>
       </div>
 
-      <div className="cell small-12">
-        {review && <Link className="btn-hover color-1" to={`/reviews/${activityId}`}>
+      <div className="cell small-12 small-offset-2 medium-offset-7 large-offset-9">
+        {review && <Link className="btn-3 draw-border edit-button" to={`/reviews/${activityId}`}>
           Edit/Delete Review
         </Link>}
       </div>

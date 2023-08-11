@@ -9,7 +9,7 @@ const TopBar = ({ user }) => {
         Sign In
       </Link>
     </li>,
-    <li key="sign-up btn-one">
+    <li key="sign-up">
       <Link to="/users/new" className="btn-3 draw-border">
         Sign Up
       </Link>
@@ -23,8 +23,8 @@ const TopBar = ({ user }) => {
   ];
 
   return (
-    <div className="top-bar make-transparent">
-      <div className="top-bar-left">
+    <div className="top-bar make-transparent grid-x">
+      <div className="top-bar-left cell small-3 small-offset-1">
         <ul className="menu">
           <li>
             <Link to="/" className="btn-3 draw-border">
