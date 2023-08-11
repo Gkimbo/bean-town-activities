@@ -37,7 +37,7 @@ Welcome to the Beantown Activities app – your personal guide to discovering th
 10. 'Delete Review' - Users can delete their previous reviews of an activity.
 
 ### Technologies used
-React , Node.js , Express , JavaScript , HTML , CSS , Cypress , PostgreSQL , Knex/Objection , Yarn
+React , Node.js , Express , JavaScript , HTML , CSS , Cypress , PostgreSQL , Knex/Objection , Yarn , Foundation , Font-Awesome
 
 If you would like to contribute to this code base:
 1. Follow the 'Getting Started' instructions to clone the repository from GitHub.
