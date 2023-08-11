@@ -42,16 +42,15 @@ body {
 }
 
 .activity-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: inline-block;
   align-items: center;
   height: fit-content;
   margin: 5%;
-  padding: 4%;
-  background: rgba(171, 209, 198, 0.5);
+  padding: 1px 4%;
+  background: rgba(171, 209, 198, 0.3);
   color: #000000;
   border-radius: 20px;
+  max-width:50%
 }
 
 .activity-show-container {
@@ -61,7 +60,7 @@ body {
   height: fit-content;
   margin: 5%;
   padding: 4%;
-  background: rgba(171, 209, 198, 0.5);
+  background: rgba(171, 209, 198, 0.3);
   color: #000000;
   border-radius: 25px;
 }

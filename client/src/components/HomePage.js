@@ -32,10 +32,10 @@ const HomePage = (props) => {
   });
 
   return (
-    <div className="grid-container align-center-middle text-center">
-      <div className="cell small-4 align-center grid-padding-x grid-padding-y">
+    <div className="grid- align-center-middle text-center">
+      <div className="cell small-4 align-center">
         <h2 className="text-center title-text">Categories</h2>
-        <div className="categories-list align-center grid-padding-x grid-padding-y">{listOfCategories}</div>
+        <div className="categories-list align-center">{listOfCategories}</div>
         <div className=" activity-container">
           <ul className="text-center activity-tile no-dot-list">
             <li>Welcome to Bean town reviews HomePage!</li>

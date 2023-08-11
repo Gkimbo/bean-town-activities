@@ -5,7 +5,7 @@ import SignOutButton from "../authentication/SignOutButton";
 const TopBar = ({ user }) => {
   const unauthenticatedListItems = [
     <li key="sign-in">
-      <Link to="/user-sessions/new" className="btn-3 draw-border button-margin">
+      <Link to="/user-sessions/new" className="btn-3 draw-border">
         Sign In
       </Link>
     </li>,
@@ -24,7 +24,7 @@ const TopBar = ({ user }) => {
 
   return (
     <div className="top-bar make-transparent grid-x">
-      <div className="top-bar-left cell small-3 small-offset-1">
+      <div className="top-bar-left">
         <ul className="menu">
           <li>
             <Link to="/" className="btn-3 draw-border">
