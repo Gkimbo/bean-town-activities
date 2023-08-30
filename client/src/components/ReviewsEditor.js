@@ -4,8 +4,8 @@ import EditReviewForm from "./EditReviewForm";
 
 const ReviewsEditor = (props) => {
   const [reviewsToEdit, setReviewsToEdit] = useState([]);
-  const [editForm, setEditForm] = useState(false)
-  const [review, setReview] = useState([])
+  const [editForm, setEditForm] = useState(false);
+  const [review, setReview] = useState([]);
 
   const getReviews = async () => {
     try {
@@ -35,7 +35,7 @@ const ReviewsEditor = (props) => {
   };
 
   const changeReview = async (newEditedReview) => {
-    const id = review.id
+    const id = review.id;
     try {
       const response = await fetch(`/api/v1/activities/${props.match.params.id}/reviews/${id}`, {
         method: "PATCH",
@@ -43,7 +43,7 @@ const ReviewsEditor = (props) => {
           "Content-Type": "application/json",
         }),
         body: JSON.stringify(newEditedReview),
-      })
+      });
       if (!response.ok) {
         if (response.status === 422) {
           const errorBody = await response.json();
@@ -58,35 +58,40 @@ const ReviewsEditor = (props) => {
       const responseData = await response.json();
       const addEditedReview = reviewsToEdit.map((review) => {
         if (review.id === id) {
-          review.content = responseData.review.content
+          review.content = responseData.review.content;
         }
-        return review
-      })
+        return review;
+      });
       setReviewsToEdit(addEditedReview);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
     }
-  }
+  };
 
   useEffect(() => {
     getReviews();
   }, []);
 
   const handleDelete = (id) => {
-    setEditForm(false)
+    setEditForm(false);
     removeReview(id);
   };
 
   const handleEdit = (id) => {
-    setEditForm(true)
-    const review = reviewsToEdit.find((review) => review.id === id)
-    setReview(review)
-  }
+    setEditForm(true);
+    const review = reviewsToEdit.find((review) => review.id === id);
+    setReview(review);
+  };
 
   const listOfReviews = reviewsToEdit.map((review) => {
     return (
-      <EditReviewTile key={review.id} review={review} handleDelete={handleDelete} handleEdit={handleEdit} />
-    )
+      <EditReviewTile
+        key={review.id}
+        review={review}
+        handleDelete={handleDelete}
+        handleEdit={handleEdit}
+      />
+    );
   });
 
   return (
@@ -94,10 +99,7 @@ const ReviewsEditor = (props) => {
       <h1 className="cell small-12">Edit your reviews!</h1>
       <ul>{listOfReviews}</ul>
       <div className="edit-form">
-        {editForm && <EditReviewForm
-          review={review}
-          changeReview={changeReview}
-        />}
+        {editForm && <EditReviewForm review={review} changeReview={changeReview} />}
       </div>
     </div>
   );

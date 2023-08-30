@@ -35,7 +35,12 @@ body {
   font-weight: var(--font-weight);
   line-height: var(--line-height);
   color: var(--color);
-  background: linear-gradient(to top, var(--color) 0%, var(--background-color) 50%, var(--color) 100%);
+  background: linear-gradient(
+    to top,
+    var(--color) 0%,
+    var(--background-color) 50%,
+    var(--color) 100%
+  );
   height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -49,8 +54,8 @@ body {
   padding: 1px 4%;
   background: rgba(171, 209, 198, 0.3);
   color: #000000;
-  border-radius: 20px;
-  max-width:50%
+  border-radius: 5px;
+  max-width: 50%;
 }
 
 .activity-show-container {
@@ -62,7 +67,7 @@ body {
   padding: 4%;
   background: rgba(171, 209, 198, 0.3);
   color: #000000;
-  border-radius: 25px;
+  border-radius: 5px;
 }
 
 .activity-list-container {
@@ -74,7 +79,7 @@ body {
   margin: 0;
   background: transparent;
   color: #000000;
-  border-radius: 25px;
+  border-radius: 5px;
 }
 
 .activity-show {
@@ -137,7 +142,7 @@ body {
   border: none;
   cursor: pointer;
   line-height: 1.5;
-  font: 700 1.2rem 'Roboto Slab', sans-serif;
+  font: 700 1.2rem "Roboto Slab", sans-serif;
   padding: 1em 2em;
   letter-spacing: 0.05rem;
   border-radius: 10px;
@@ -147,12 +152,12 @@ body {
   }
 }
 
-.btn-3 .edit-button{
+.btn-3 .edit-button {
   background: none;
   border: none;
   cursor: pointer;
   line-height: 1.5;
-  font: 700 1.2rem 'Roboto Slab', sans-serif;
+  font: 700 1.2rem "Roboto Slab", sans-serif;
   padding: 1em 2em;
   letter-spacing: 0.05rem;
   border-radius: 10px;
@@ -166,13 +171,13 @@ body {
   margin-right: 1rem;
 }
 
-.edit-page-title{
+.edit-page-title {
   border: 2px solid black;
 }
 
 .button-delete {
   appearance: none;
-  display:inline-block;
+  display: inline-block;
   background: transparent;
   color: #fff;
   cursor: pointer;
@@ -193,22 +198,22 @@ body {
   filter: brightness(0.9);
 }
 
-.button-delete>span {
+.button-delete > span {
   display: block;
   position: relative;
   transition: transform var(--motion-duration) var(--motion-ease);
   z-index: 1;
 }
 
-.button-delete:hover>span {
+.button-delete:hover > span {
   transform: scale(1.05);
 }
 
-.button-delete:active>span {
+.button-delete:active > span {
   transform: scale(0.95);
 }
 
-.button-delete>svg {
+.button-delete > svg {
   fill: #de0c0c;
   position: absolute;
   top: -5%;
@@ -218,15 +223,15 @@ body {
   bottom: -5%;
 }
 
-.button-delete>svg>path {
+.button-delete > svg > path {
   transition: var(--motion-duration) var(--motion-ease);
 }
 
-.button-delete:hover>svg>path {
+.button-delete:hover > svg > path {
   d: path("M0,0 C0,-5 100,-5 100,0 C105,0 105,100 100,100 C100,105 0,105 0,100 C-5,100 -5,0 0,0");
 }
 
-.button-delete:active>svg>path {
+.button-delete:active > svg > path {
   d: path("M0,0 C30,10 70,10 100,0 C95,30 95,70 100,100 C70,90 30,90 0,100 C5,70 5,30 0,0");
 }
 
@@ -363,20 +368,26 @@ body {
   background-color: #abd1c6;
 }
 
-.text-box-1{
+.text-box-1 {
   background-color: #00577f;
 }
 
-.make-transparent{
+.make-transparent {
   background: transparent;
 }
 
-.make-transparent .menu{
+.make-transparent .menu {
   background: transparent;
 }
 
-
-@mixin btn-border-drawing($color: #ccc, $hover: black, $width: 2px, $vertical: top, $horizontal: left, $duration: 0.25s) {
+@mixin btn-border-drawing(
+  $color: #ccc,
+  $hover: black,
+  $width: 2px,
+  $vertical: top,
+  $horizontal: left,
+  $duration: 0.25s
+) {
   box-shadow: inset 0 0 0 $width $color;
   color: $color;
   transition: color $duration $duration/3;
@@ -386,7 +397,7 @@ body {
   &::after {
     border: 0 solid transparent;
     box-sizing: border-box;
-    content: '';
+    content: "";
     pointer-events: none;
     position: absolute;
     width: 0;
@@ -397,14 +408,14 @@ body {
   }
 
   &::before {
-    $h-side: if($horizontal =='left', 'right', 'left');
+    $h-side: if($horizontal == "left", "right", "left");
 
     border-#{$vertical}-width: $width;
     border-#{$h-side}-width: $width;
   }
 
   &::after {
-    $v-side: if($vertical =='top', 'bottom', 'top');
+    $v-side: if($vertical == "top", "bottom", "top");
 
     border-#{$v-side}-width: $width;
     border-#{$horizontal}-width: $width;
@@ -442,7 +453,7 @@ body {
   text-align: center;
 }
 
-input[type=submit] {
+input[type="submit"] {
   color: #030101;
   padding: 5px 15px;
   background: #ccc;
@@ -452,22 +463,22 @@ input[type=submit] {
   border-radius: 5px;
 }
 
-.voting-div{
-  display:inline-block;
+.voting-div {
+  display: inline-block;
   margin: 0 6px;
 }
 
-.fa-thumbs-down{
-  color:#a90909;
+.fa-thumbs-down {
+  color: #a90909;
 }
 
-.fa-thumbs-up{
-  color:#01991a;
+.fa-thumbs-up {
+  color: #01991a;
 }
-.thumbs-down{
-  color:#a90909;
+.thumbs-down {
+  color: #a90909;
 }
 
-.thumbs-up{
-  color:#01991a;
+.thumbs-up {
+  color: #01991a;
 }
