@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const ActivitiesList = (props) => {
+  console.log(props);
   const [category, setCategory] = useState({ activities: [] });
 
   const getActivities = async () => {
